@@ -1,0 +1,18 @@
+version: 2.1
+jobs:
+  build:
+    working_directory: ~/lwc-webpack-plugin
+    docker:
+      - image: circleci/node:16
+    steps:
+      - checkout
+      - restore_cache:
+          key: yarn-packages-{{ checksum "yarn.json" }}
+      - run:
+          command: yarn --frozen-lockfile
+      - save_cache:
+          key: yarn-packages-{{ checksum "yarn.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          command: yarn test

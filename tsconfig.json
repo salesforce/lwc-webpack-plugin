@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "module": "commonjs",
+        "outDir": "./dist",
+        "esModuleInterop": true,
+        "declaration": true
+    }
+}

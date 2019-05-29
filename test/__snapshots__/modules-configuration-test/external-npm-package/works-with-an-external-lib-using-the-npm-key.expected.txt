@@ -1,0 +1,246 @@
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./node_modules/some-external-library/modules/y/component/component.html":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/some-external-library/modules/y/component/component.html ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _component_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component.css */ "./dist/mocks/empty-style.js");
+/* harmony import */ var _component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./component.scoped.css?scoped=true */ "./dist/mocks/empty-style.js?scoped=true");
+/* harmony import */ var lwc__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lwc */ "lwc");
+/* harmony import */ var lwc__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lwc__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+
+function tmpl($api, $cmp, $slotset, $ctx) {
+  const {t: api_text, h: api_element} = $api;
+  return [api_element("h1", {
+    key: 0
+  }, [api_text("I am external!")])];
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,lwc__WEBPACK_IMPORTED_MODULE_2__.registerTemplate)(tmpl));
+tmpl.stylesheets = [];
+
+
+if (_component_css__WEBPACK_IMPORTED_MODULE_0__["default"]) {
+  tmpl.stylesheets.push.apply(tmpl.stylesheets, _component_css__WEBPACK_IMPORTED_MODULE_0__["default"])
+}
+if (_component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_1__["default"]) {
+  tmpl.stylesheets.push.apply(tmpl.stylesheets, _component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_1__["default"])
+}
+tmpl.stylesheetToken = "y-component_component"
+
+
+/***/ }),
+
+/***/ "./node_modules/some-external-library/modules/y/component/component.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/some-external-library/modules/y/component/component.js ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _component_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component.html */ "./node_modules/some-external-library/modules/y/component/component.html");
+/* harmony import */ var lwc__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lwc */ "lwc");
+/* harmony import */ var lwc__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lwc__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,lwc__WEBPACK_IMPORTED_MODULE_1__.registerComponent)(class extends lwc__WEBPACK_IMPORTED_MODULE_1__.LightningElement {}, {
+  tmpl: _component_html__WEBPACK_IMPORTED_MODULE_0__["default"]
+}));
+;
+
+/***/ }),
+
+/***/ "./test/fixtures/has-external/modules/x/component/component.html":
+/*!***********************************************************************!*\
+  !*** ./test/fixtures/has-external/modules/x/component/component.html ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _component_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component.css */ "./dist/mocks/empty-style.js");
+/* harmony import */ var _component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./component.scoped.css?scoped=true */ "./dist/mocks/empty-style.js?scoped=true");
+/* harmony import */ var y_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! y/component */ "./node_modules/some-external-library/modules/y/component/component.js");
+/* harmony import */ var lwc__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lwc */ "lwc");
+/* harmony import */ var lwc__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lwc__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+
+
+function tmpl($api, $cmp, $slotset, $ctx) {
+  const {c: api_custom_element} = $api;
+  return [api_custom_element("y-component", y_component__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    key: 0
+  }, [])];
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,lwc__WEBPACK_IMPORTED_MODULE_3__.registerTemplate)(tmpl));
+tmpl.stylesheets = [];
+
+
+if (_component_css__WEBPACK_IMPORTED_MODULE_0__["default"]) {
+  tmpl.stylesheets.push.apply(tmpl.stylesheets, _component_css__WEBPACK_IMPORTED_MODULE_0__["default"])
+}
+if (_component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_1__["default"]) {
+  tmpl.stylesheets.push.apply(tmpl.stylesheets, _component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_1__["default"])
+}
+tmpl.stylesheetToken = "x-component_component"
+
+
+/***/ }),
+
+/***/ "./dist/mocks/empty-style.js":
+/*!***********************************!*\
+  !*** ./dist/mocks/empty-style.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+exports.__esModule = true;
+/*
+ * Copyright (c) 2022, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: MIT
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
+ */
+exports["default"] = undefined;
+
+
+/***/ }),
+
+/***/ "./dist/mocks/empty-style.js?scoped=true":
+/*!***********************************************!*\
+  !*** ./dist/mocks/empty-style.js?scoped=true ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+exports.__esModule = true;
+/*
+ * Copyright (c) 2022, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: MIT
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
+ */
+exports["default"] = undefined;
+
+
+/***/ }),
+
+/***/ "lwc":
+/*!**********************!*\
+  !*** external "lwc" ***!
+  \**********************/
+/***/ ((module) => {
+
+module.exports = lwc;
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+/*!*********************************************************************!*\
+  !*** ./test/fixtures/has-external/modules/x/component/component.js ***!
+  \*********************************************************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _component_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component.html */ "./test/fixtures/has-external/modules/x/component/component.html");
+/* harmony import */ var lwc__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lwc */ "lwc");
+/* harmony import */ var lwc__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lwc__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,lwc__WEBPACK_IMPORTED_MODULE_1__.registerComponent)(class extends lwc__WEBPACK_IMPORTED_MODULE_1__.LightningElement {}, {
+  tmpl: _component_html__WEBPACK_IMPORTED_MODULE_0__["default"]
+}));
+})();
+
+/******/ })()
+;
