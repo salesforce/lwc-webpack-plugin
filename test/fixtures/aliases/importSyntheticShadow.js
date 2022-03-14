@@ -1,0 +1,1 @@
+import '@lwc/synthetic-shadow'
