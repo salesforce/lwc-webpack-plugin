@@ -351,7 +351,7 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.3.tgz#e45e384e4b8ec16bce2fd903af78450f6bf7ec98"
   integrity sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==
 
-"@lwc/babel-plugin-component@2.5.10", "@lwc/babel-plugin-component@~2.5.2":
+"@lwc/babel-plugin-component@2.5.10":
   version "2.5.10"
   resolved "https://registry.yarnpkg.com/@lwc/babel-plugin-component/-/babel-plugin-component-2.5.10.tgz#292209db03f41c20ff67649ddaed6bf56abbe9fe"
   integrity sha512-vvUDpiTHNuhkhzMNohBT+ZVEbrfpTDn0yRZA9Bd+FKVUhpJPUFJdau7jtX9KmIEVOoI4oN5r8Ba7lyBMauk3NQ==
@@ -360,7 +360,7 @@
     "@lwc/errors" "2.5.10"
     line-column "~1.0.2"
 
-"@lwc/compiler@~2.5.2":
+"@lwc/compiler@2.5.10":
   version "2.5.10"
   resolved "https://registry.yarnpkg.com/@lwc/compiler/-/compiler-2.5.10.tgz#a890510be0a52fda5065437974c595dfe3c9ba7e"
   integrity sha512-eSJREdvRJJGg60THP4nMs+87hr94Oo/sCvmJ2KCGKjofF+rJQTOyi1Sgh6oKrq58EFJUffSINCbEyWREZoTlCA==
@@ -374,17 +374,29 @@
     "@lwc/style-compiler" "2.5.10"
     "@lwc/template-compiler" "2.5.10"
 
-"@lwc/engine-dom@~2.5.2":
+"@lwc/engine-dom@2.5.10":
   version "2.5.10"
   resolved "https://registry.yarnpkg.com/@lwc/engine-dom/-/engine-dom-2.5.10.tgz#f4c221d0ca4ae1225d7ee4daf577fb243d7fdd4d"
   integrity sha512-w+iZf6uGeYPv7hMuYm2jCwP6zon+7oJYtHvDX+k4bGv/ZJvkl5GN63uqZYEGDEIs6BaR4YUVbKTdUk8L27YV6Q==
+
+"@lwc/engine-server@2.5.10":
+  version "2.5.10"
+  resolved "https://registry.yarnpkg.com/@lwc/engine-server/-/engine-server-2.5.10.tgz#a5a0ceebfe445a396d2f7259712331cb302a5edd"
+  integrity sha512-qzYtv5FoFSVijCMpfyMAJ/b3ODJF3ezXKQkX7oLVicpUYlfUg0+GZRzgHafI7cz/mdiznoICtnu6YkaXxFSbHQ==
 
 "@lwc/errors@2.5.10":
   version "2.5.10"
   resolved "https://registry.yarnpkg.com/@lwc/errors/-/errors-2.5.10.tgz#549a1790115415658298fc002169eebfaf082386"
   integrity sha512-CgSFVyP/PZr42a1gmReN5GJAf1AMeSgAVlCUhuf0XY8LiduQPvmBqUHOsgdFkADcDp1sfwcWKp6wfB+WIU+sYQ==
 
-"@lwc/module-resolver@~2.5.2":
+"@lwc/features@2.5.10":
+  version "2.5.10"
+  resolved "https://registry.yarnpkg.com/@lwc/features/-/features-2.5.10.tgz#a3fa92426b666afa60f0ca95c5d248106bd6fc0f"
+  integrity sha512-e7Dr9wuqS6QPb2bMfxXIT3kPRM/S78QpD2QEdo+7Bhu8hFDECU3JwGaeS6zoZVcsJ0eORdxqUvihiTE8FABVzQ==
+  dependencies:
+    "@lwc/shared" "2.5.10"
+
+"@lwc/module-resolver@2.5.10":
   version "2.5.10"
   resolved "https://registry.yarnpkg.com/@lwc/module-resolver/-/module-resolver-2.5.10.tgz#32597291d0486f189cc234b122c070fd7a35b91e"
   integrity sha512-h7u71Rut1hQOPzhi+Hp8bagzBzTQsMIPNmyMHgR7M+BdAV68Jv0VKFgbjIHZOXy6N53jOgxandR7oM8mpUA4WA==
@@ -407,7 +419,7 @@
     postcss-value-parser "~4.1.0"
     string.prototype.matchall "^4.0.5"
 
-"@lwc/synthetic-shadow@~2.5.2":
+"@lwc/synthetic-shadow@2.5.10":
   version "2.5.10"
   resolved "https://registry.yarnpkg.com/@lwc/synthetic-shadow/-/synthetic-shadow-2.5.10.tgz#fe7e5d92570817bd0d6ef8ac523daa919ac12204"
   integrity sha512-NHX5/qCtRr3OPpEt48PgelySKtV6JWRSbwNaAZOs0NAhgCLRIG5JnxtztQLHsBDhVtxYW2L0d5rfxQuvt9aO1A==
@@ -426,7 +438,7 @@
     he "~1.2.0"
     parse5 "~6.0.1"
 
-"@lwc/wire-service@~2.5.2":
+"@lwc/wire-service@2.5.10":
   version "2.5.10"
   resolved "https://registry.yarnpkg.com/@lwc/wire-service/-/wire-service-2.5.10.tgz#fffc0338f0078c749b3637aa5150004652689e23"
   integrity sha512-BypuyqDoqkt+FcCrJi59FbVmw46/G3lXluPpkBz8vvlXnvV+7UDdtx0+QBQfFZjC/CSLpVOR+6jM3wtvWtCTbQ==
@@ -1757,6 +1769,18 @@ loupe@^2.3.1:
   integrity sha512-OvKfgCC2Ndby6aSTREl5aCCPTNIzlDfQZvZxNUrBrihDhL3xcrYegTblhmEiCrg2kKQz4XsFIaemE5BF4ybSaQ==
   dependencies:
     get-func-name "^2.0.0"
+
+lwc@2.5.10:
+  version "2.5.10"
+  resolved "https://registry.yarnpkg.com/lwc/-/lwc-2.5.10.tgz#b4e67bf0c7689e4140ec00734e3a8efe3c8f684f"
+  integrity sha512-m3IcjBGGOApPCNV7Rw2dtmCkY/u4D0lyQhuh5JgJCq9CWYnVFWWOnmCGRf7yfXCc4dmRyYVuzqCJIlk2pWtrMA==
+  dependencies:
+    "@lwc/compiler" "2.5.10"
+    "@lwc/engine-dom" "2.5.10"
+    "@lwc/engine-server" "2.5.10"
+    "@lwc/features" "2.5.10"
+    "@lwc/synthetic-shadow" "2.5.10"
+    "@lwc/wire-service" "2.5.10"
 
 make-dir@^3.0.0, make-dir@^3.0.2, make-dir@^3.1.0:
   version "3.1.0"
