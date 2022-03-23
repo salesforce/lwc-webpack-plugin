@@ -7,11 +7,11 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: yarn-packages-{{ checksum "yarn.json" }}
+          key: yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           command: yarn --frozen-lockfile
       - save_cache:
-          key: yarn-packages-{{ checksum "yarn.json" }}
+          key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
       - run:
