@@ -18,7 +18,10 @@
     ],
     "devDependencies": {
         "@lwc/module-resolver": "2.5.10",
+        "@babel/plugin-syntax-decorators": "^7.17.0",
+        "@babel/preset-typescript": "^7.16.7",
         "@types/node": "~16.11.26",
+        "babel-loader": "^8.2.4",
         "chai": "^4.3.6",
         "lwc": "2.5.10",
         "memfs": "^3.4.1",

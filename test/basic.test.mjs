@@ -10,12 +10,12 @@ const snap = mochaSnap.default.default
 
 describe('basic test', () => {
 
-    const testComponent = async (dir, extension = 'js') => {
+    const testComponent = async (dir, extension = 'js', mergeLastOptions = {}) => {
         const { code } = await bundle({
             entry: `${dir}/x/component/component.${extension}`
         }, {
             modules: [ { dir: `${dir}/x` } ]
-        })
+        }, mergeLastOptions)
 
         await snap(code)
         assertCodeIsValid(code)
@@ -42,6 +42,25 @@ describe('basic test', () => {
     })
 
     it('component with typescript', async () => {
-        await testComponent('typescript', 'ts')
+        await testComponent('typescript', 'ts', {
+            // this plugin has to come after LwcWebpackPlugin because plugins/rules execute in reverse order
+            plugins: [
+                {
+                    apply(compiler) {
+                        compiler.options.module.rules.push({
+                            test: /\.ts$/,
+                            exclude: /node_modules/,
+                            use: {
+                                loader: 'babel-loader',
+                                options: {
+                                    presets: ['@babel/preset-typescript'],
+                                    plugins: [['@babel/plugin-syntax-decorators', {legacy: true}]],
+                                }
+                            }
+                        })
+                    }
+                },
+            ]
+        })
     })
 })

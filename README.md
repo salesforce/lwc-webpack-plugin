@@ -50,6 +50,45 @@ Read more about Lightning Web Components [here](https://github.com/muenzpraeger/
 
 If you want to see Lightning Web Components in action - check out [https://recipes.lwc.dev](https://recipes.lwc.dev).
 
+## TypeScript
+
+If you want to use TypeScript in your LWC components, you can install the necessary Babel dependencies:
+
+```shell
+npm install --save-dev \
+    babel-loader@^8 \
+    @babel/preset-typescript@^7 \
+    @babel/plugin-syntax-decorators@^7
+```
+
+Then add this to your `webpack.config.js`:
+
+```js
+module.exports = {
+  plugins: [
+    new LwcWebpackPlugin(),
+    // Add this _after_ LwcWebpackPlugin:
+    {
+      apply(compiler) {
+        compiler.options.module.rules.push({
+          test: /\.ts$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-typescript'],
+              plugins: [['@babel/plugin-syntax-decorators', { legacy: true }]],
+            }
+          }
+        })
+      }
+    }
+  ]
+}
+```
+
+You may customize the `babel-loader` settings to suit your needs.
+
 ## Tests
 
 To run the tests in this repo, do:
