@@ -10,9 +10,9 @@ const snap = mochaSnap.default.default
 
 describe('basic test', () => {
 
-    const testComponent = async dir => {
+    const testComponent = async (dir, extension = 'js') => {
         const { code } = await bundle({
-            entry: `${dir}/x/component/component.js`
+            entry: `${dir}/x/component/component.${extension}`
         }, {
             modules: [ { dir: `${dir}/x` } ]
         })
@@ -39,5 +39,9 @@ describe('basic test', () => {
 
     it('component with multiple templates', async () => {
         await testComponent('multi-template')
+    })
+
+    it('component with typescript', async () => {
+        await testComponent('typescript', 'ts')
     })
 })
