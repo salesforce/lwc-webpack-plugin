@@ -1,0 +1,261 @@
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./node_modules/@lwc/wire-service/dist/wire-service.cjs.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@lwc/wire-service/dist/wire-service.cjs.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+/**
+ * Copyright (C) 2018 salesforce.com, inc.
+ */
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+/**
+ * Copyright (C) 2018 salesforce.com, inc.
+ */
+function isUndefined(obj) {
+    return obj === undefined;
+}
+/** version: 2.5.10 */
+
+/*
+ * Copyright (c) 2018, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: MIT
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
+ */
+const ValueChangedEventType = 'ValueChangedEvent';
+/**
+ * Event fired by wire adapters to emit a new value.
+ */
+class ValueChangedEvent {
+    constructor(value) {
+        this.type = ValueChangedEventType;
+        this.value = value;
+    }
+}
+
+/*
+ * Copyright (c) 2018, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: MIT
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
+ */
+const { freeze, defineProperty, isExtensible } = Object;
+// This value needs to be in sync with wiring.ts from @lwc/engine-core
+const DeprecatedWiredElementHost = '$$DeprecatedWiredElementHostKey$$';
+const DeprecatedWiredParamsMeta = '$$DeprecatedWiredParamsMetaKey$$';
+/**
+ * Registers a wire adapter factory for Lightning Platform.
+ * @deprecated
+ */
+function register(adapterId, adapterEventTargetCallback) {
+    if (adapterId == null || !isExtensible(adapterId)) {
+        throw new TypeError('adapter id must be extensible');
+    }
+    if (typeof adapterEventTargetCallback !== 'function') {
+        throw new TypeError('adapter factory must be a callable');
+    }
+    if ('adapter' in adapterId) {
+        throw new TypeError('adapter id is already associated to an adapter factory');
+    }
+    const AdapterClass = class extends LegacyWireAdapterBridge {
+        constructor(dataCallback) {
+            super(dataCallback);
+            adapterEventTargetCallback(this.eventTarget);
+        }
+    };
+    freeze(AdapterClass);
+    freeze(AdapterClass.prototype);
+    defineProperty(adapterId, 'adapter', {
+        writable: false,
+        configurable: false,
+        value: AdapterClass,
+    });
+}
+/**
+ * Registers the wire service. noop
+ * @deprecated
+ */
+function registerWireService() { }
+const { forEach, splice: ArraySplice, indexOf: ArrayIndexOf } = Array.prototype;
+// wire event target life cycle connectedCallback hook event type
+const CONNECT = 'connect';
+// wire event target life cycle disconnectedCallback hook event type
+const DISCONNECT = 'disconnect';
+// wire event target life cycle config changed hook event type
+const CONFIG = 'config';
+function removeListener(listeners, toRemove) {
+    const idx = ArrayIndexOf.call(listeners, toRemove);
+    if (idx > -1) {
+        ArraySplice.call(listeners, idx, 1);
+    }
+}
+function isEmptyConfig(config) {
+    return Object.keys(config).length === 0;
+}
+function isValidConfig(config, params) {
+    // The config is valid if there is no params, or if exist a param for which config[param] !== undefined.
+    return params.length === 0 || params.some((param) => !isUndefined(config[param]));
+}
+function isDifferentConfig(newConfig, oldConfig, params) {
+    return params.some((param) => newConfig[param] !== oldConfig[param]);
+}
+class LegacyWireAdapterBridge {
+    constructor(callback) {
+        this.connecting = [];
+        this.disconnecting = [];
+        this.configuring = [];
+        this.isFirstUpdate = true;
+        this.callback = callback;
+        this.wiredElementHost = callback[DeprecatedWiredElementHost];
+        this.dynamicParamsNames = callback[DeprecatedWiredParamsMeta];
+        this.eventTarget = {
+            addEventListener: (type, listener) => {
+                switch (type) {
+                    case CONNECT: {
+                        this.connecting.push(listener);
+                        break;
+                    }
+                    case DISCONNECT: {
+                        this.disconnecting.push(listener);
+                        break;
+                    }
+                    case CONFIG: {
+                        this.configuring.push(listener);
+                        if (this.currentConfig !== undefined) {
+                            listener.call(undefined, this.currentConfig);
+                        }
+                        break;
+                    }
+                    default:
+                        throw new Error(`Invalid event type ${type}.`);
+                }
+            },
+            removeEventListener: (type, listener) => {
+                switch (type) {
+                    case CONNECT: {
+                        removeListener(this.connecting, listener);
+                        break;
+                    }
+                    case DISCONNECT: {
+                        removeListener(this.disconnecting, listener);
+                        break;
+                    }
+                    case CONFIG: {
+                        removeListener(this.configuring, listener);
+                        break;
+                    }
+                    default:
+                        throw new Error(`Invalid event type ${type}.`);
+                }
+            },
+            dispatchEvent: (evt) => {
+                if (evt instanceof ValueChangedEvent) {
+                    const value = evt.value;
+                    this.callback(value);
+                }
+                else if (evt.type === 'wirecontextevent') {
+                    // TODO [#1357]: remove this branch
+                    return this.wiredElementHost.dispatchEvent(evt);
+                }
+                else {
+                    throw new Error(`Invalid event type ${evt.type}.`);
+                }
+                return false; // canceling signal since we don't want this to propagate
+            },
+        };
+    }
+    update(config) {
+        if (this.isFirstUpdate) {
+            // this is a special case for legacy wire adapters: when all the config params are undefined,
+            // the config on the wire adapter should not be called until one of them changes.
+            this.isFirstUpdate = false;
+            if (!isEmptyConfig(config) && !isValidConfig(config, this.dynamicParamsNames)) {
+                return;
+            }
+        }
+        if (isUndefined(this.currentConfig) ||
+            isDifferentConfig(config, this.currentConfig, this.dynamicParamsNames)) {
+            this.currentConfig = config;
+            forEach.call(this.configuring, (listener) => {
+                listener.call(undefined, config);
+            });
+        }
+    }
+    connect() {
+        forEach.call(this.connecting, (listener) => listener.call(undefined));
+    }
+    disconnect() {
+        forEach.call(this.disconnecting, (listener) => listener.call(undefined));
+    }
+}
+
+exports.ValueChangedEvent = ValueChangedEvent;
+exports.register = register;
+exports.registerWireService = registerWireService;
+/** version: 2.5.10 */
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+/*!****************************************************!*\
+  !*** ./test/fixtures/aliases/importWireService.js ***!
+  \****************************************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var wire_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! wire-service */ "./node_modules/@lwc/wire-service/dist/wire-service.cjs.js");
+
+
+console.log(wire_service__WEBPACK_IMPORTED_MODULE_0__.register)
+
+})();
+
+/******/ })()
+;
