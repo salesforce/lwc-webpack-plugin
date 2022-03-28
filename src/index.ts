@@ -74,7 +74,7 @@ function transformModuleRecordsToIncludes(modulesConfig: any[]): string[] {
     return records
 }
 
-const EXTENSIONS = ['.js', '.ts']
+const EXTENSIONS = ['.js']
 
 module.exports = class Plugin {
     config: PluginConfig
@@ -125,7 +125,7 @@ module.exports = class Plugin {
         }
 
         compiler.options.module.rules.push({
-            test: /\.(js|ts|html|css)$/,
+            test: /\.(js|html|css)$/,
             include: transformModuleRecordsToIncludes(modules),
             use: {
                 loader: require.resolve('./loader'),
