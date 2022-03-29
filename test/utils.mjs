@@ -29,7 +29,7 @@ const baseConfig = {
     }
 }
 // Largely borrowed from https://github.com/vuejs/vue-loader/blob/c1f4660/test/utils.js
-async function bundle (options, lwcWebpackPluginOptions) {
+async function bundle (options, lwcWebpackPluginOptions, mergeLastOptions = {}) {
     // make relative paths absolute
     options.entry = path.resolve(__dirname, 'fixtures', options.entry)
     if (lwcWebpackPluginOptions?.modules) {
@@ -44,7 +44,7 @@ async function bundle (options, lwcWebpackPluginOptions) {
         plugins: [
             new LwcWebpackPlugin(lwcWebpackPluginOptions)
         ]
-    })
+    }, mergeLastOptions)
     const webpackCompiler = webpack(config)
     webpackCompiler.outputFileSystem = mfs
     webpackCompiler.outputFileSystem.join = path.join.bind(path)
