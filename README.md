@@ -2,6 +2,14 @@
 
 This plugin allows you to use LWC within any web framework project that uses Webpack.
 
+## Install
+
+    npm install --save-dev lwc-webpack-plugin lwc @lwc/module-resolver
+
+Note that you must install your own dependencies for `lwc` and `@lwc/module-resolver`.
+
+## Usage
+
 ```javascript
 const LwcWebpackPlugin = require('lwc-webpack-plugin')
 
