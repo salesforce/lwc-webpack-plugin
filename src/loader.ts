@@ -4,12 +4,13 @@
  * SPDX-License-Identifier: MIT
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
  */
+const { URLSearchParams } = require("url");
 const compiler = require('@lwc/compiler')
 const { getInfoFromPath } = require('./module')
 import { getOptions } from 'loader-utils'
 
 module.exports = function (source: any) {
-    const { resourcePath } = this
+    const { resourcePath, resourceQuery } = this
     const { stylesheetConfig, outputConfig, experimentalDynamicComponent } =
         getOptions(this)
 
@@ -25,23 +26,19 @@ module.exports = function (source: any) {
 
     let codeTransformed = source
 
-    const cb = this.async()
+    // Scoped styles have paths like this: "foo.scoped.css?scoped=true"
+    const scopedStyles = resourcePath.endsWith('.css') &&
+        resourceQuery &&
+        new URLSearchParams(resourceQuery).get('scoped') === 'true'
 
-    compiler
-        .transform(codeTransformed, resourcePath, {
+    const { code } = compiler.transformSync(codeTransformed, resourcePath, {
             name: info.name,
             namespace: info.ns,
             stylesheetConfig,
             outputConfig,
             experimentalDynamicComponent,
-            scopedStyles: resourcePath.endsWith('.scoped.css')
-        })
-        .then((res: any) => {
-            cb(null, res.code)
-        })
-        .catch((err: any) => {
-            cb(err)
+            scopedStyles
         })
 
-    return
+    return code
 }
