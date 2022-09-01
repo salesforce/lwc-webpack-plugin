@@ -21,7 +21,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 function isUndefined(obj) {
     return obj === undefined;
 }
-/** version: 2.5.10 */
+/** version: 2.23.2 */
 
 /*
  * Copyright (c) 2018, salesforce.com, inc.
@@ -199,7 +199,7 @@ class LegacyWireAdapterBridge {
 exports.ValueChangedEvent = ValueChangedEvent;
 exports.register = register;
 exports.registerWireService = registerWireService;
-/** version: 2.5.10 */
+/** version: 2.23.2 */
 
 
 /***/ })

@@ -12,32 +12,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _component_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component.css */ "./dist/mocks/empty-style.js");
-/* harmony import */ var _component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./component.scoped.css?scoped=true */ "./test/fixtures/scoped-css/x/component/component.scoped.css?scoped=true");
-/* harmony import */ var lwc__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lwc */ "lwc");
-/* harmony import */ var lwc__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lwc__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lwc__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lwc */ "lwc");
+/* harmony import */ var lwc__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lwc__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _component_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./component.css */ "./dist/mocks/empty-style.js");
+/* harmony import */ var _component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./component.scoped.css?scoped=true */ "./test/fixtures/scoped-css/x/component/component.scoped.css?scoped=true");
 
 
 
 
 
+
+
+const $fragment1 = lwc__WEBPACK_IMPORTED_MODULE_0__.parseFragment`<h1${3}>I am scoped</h1>`;
 function tmpl($api, $cmp, $slotset, $ctx) {
-  const {t: api_text, h: api_element} = $api;
-  return [api_element("h1", {
-    key: 0
-  }, [api_text("I am scoped")])];
+  const {st: api_static_fragment} = $api;
+  return [api_static_fragment($fragment1(), 1)];
+  /*LWC compiler v2.23.2*/
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,lwc__WEBPACK_IMPORTED_MODULE_2__.registerTemplate)(tmpl));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,lwc__WEBPACK_IMPORTED_MODULE_0__.registerTemplate)(tmpl));
 tmpl.stylesheets = [];
 
 
-if (_component_css__WEBPACK_IMPORTED_MODULE_0__["default"]) {
-  tmpl.stylesheets.push.apply(tmpl.stylesheets, _component_css__WEBPACK_IMPORTED_MODULE_0__["default"])
+if (_component_css__WEBPACK_IMPORTED_MODULE_1__["default"]) {
+  tmpl.stylesheets.push.apply(tmpl.stylesheets, _component_css__WEBPACK_IMPORTED_MODULE_1__["default"])
 }
-if (_component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_1__["default"]) {
-  tmpl.stylesheets.push.apply(tmpl.stylesheets, _component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_1__["default"])
+if (_component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_2__["default"]) {
+  tmpl.stylesheets.push.apply(tmpl.stylesheets, _component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_2__["default"])
 }
-tmpl.stylesheetToken = "x-component_component"
+if (_component_css__WEBPACK_IMPORTED_MODULE_1__["default"] || _component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_2__["default"]) {
+  tmpl.stylesheetToken = "x-component_component"
+}
+(0,lwc__WEBPACK_IMPORTED_MODULE_0__.freezeTemplate)(tmpl);
 
 
 /***/ }),
@@ -52,10 +57,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function stylesheet(useActualHostSelector, token) {
+function stylesheet(token, useActualHostSelector, useNativeDirPseudoclass) {
   var shadowSelector = token ? ("." + token) : "";
   var hostSelector = token ? ("." + token + "-host") : "";
-  return ["h1", shadowSelector, " {color: red;}"].join('');
+  return "h1" + shadowSelector + " {color: red;}";
+  /*LWC compiler v2.23.2*/
 }
 stylesheet.$scoped$ = true;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([stylesheet]);
@@ -174,7 +180,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lwc__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lwc__WEBPACK_IMPORTED_MODULE_1__);
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,lwc__WEBPACK_IMPORTED_MODULE_1__.registerComponent)(class extends lwc__WEBPACK_IMPORTED_MODULE_1__.LightningElement {}, {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,lwc__WEBPACK_IMPORTED_MODULE_1__.registerComponent)(class extends lwc__WEBPACK_IMPORTED_MODULE_1__.LightningElement {
+  /*LWC compiler v2.23.2*/
+}, {
   tmpl: _component_html__WEBPACK_IMPORTED_MODULE_0__["default"]
 }));
 })();

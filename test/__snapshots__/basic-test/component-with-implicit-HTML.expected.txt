@@ -118,6 +118,8 @@ __webpack_require__.r(__webpack_exports__);
   renderedCallback() {
     console.log('yolo');
   }
+  /*LWC compiler v2.23.2*/
+
 
 }, {
   tmpl: _component_html__WEBPACK_IMPORTED_MODULE_0__["default"]
