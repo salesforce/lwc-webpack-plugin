@@ -102,3 +102,4 @@ To update snapshot files:
 To run code coverage tests:
 
     yarn test:coverage
+test
