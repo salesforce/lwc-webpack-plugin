@@ -5,7 +5,9 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
  */
 import { assertCodeIsValid, bundle } from './utils.mjs'
+import { spy } from 'sinon';
 import * as mochaSnap from "mocha-snap"
+import { expect } from 'chai';
 const snap = mochaSnap.default.default
 
 describe('basic test', () => {
@@ -39,6 +41,12 @@ describe('basic test', () => {
 
     it('component with multiple templates', async () => {
         await testComponent('multi-template')
+    })
+
+    it('component with missing css', async () => {
+        const consoleSpy = spy(console, 'log')
+        await testComponent('missing-css')
+        expect(consoleSpy.calledWith('missing-css/x/component/stylesheet.css does not exist: Importing it as undefined.'))
     })
 
     it('component with typescript', async () => {

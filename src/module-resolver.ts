@@ -78,6 +78,15 @@ export class LwcModuleResolverPlugin {
         )
     }
 
+    isImplicitCssImport(importee: string, importer: string) {
+        return (
+            extname(importee) === '.css' &&
+            extname(importer) === '.html' &&
+            (basename(importee, '.css') === basename(importer, '.html') ||
+                basename(importee, '.scoped.css') === basename(importer, '.html'))
+        );
+    }
+
     resolveFile(req: any, ctx: any, cb: any) {
         const { path: resourcePath, query } = req
         const extFilename = extname(resourcePath)
@@ -88,8 +97,16 @@ export class LwcModuleResolverPlugin {
 
         this.fs.stat(resourcePath, (err: { code: string } | null) => {
             if (err !== null && err.code === 'ENOENT') {
+                const isCSS = extFilename === '.css';
                 if (
-                    extFilename === '.css' ||
+                    isCSS && 
+                    !this.isImplicitCssImport(resourcePath, req.context.issuer)
+                ) {
+                    // warning for a missing non-implicit CSS import
+                    console.warn(`The imported CSS file ${resourcePath} does not exist: Importing it as undefined.`)
+                }
+                if (
+                    isCSS ||
                     this.isImplicitHTMLImport(resourcePath, req.context.issuer)
                 ) {
                     return cb(null, {
