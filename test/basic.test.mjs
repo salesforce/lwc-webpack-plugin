@@ -44,7 +44,7 @@ describe('basic test', () => {
     })
 
     it('component with missing css', async () => {
-        const consoleSpy = spy(console, 'log')
+        const consoleSpy = spy(console, 'warn')
         await testComponent('missing-css')
         expect(consoleSpy.calledWith('missing-css/x/component/stylesheet.css does not exist: Importing it as undefined.'))
     })
