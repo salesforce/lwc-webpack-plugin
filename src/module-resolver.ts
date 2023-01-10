@@ -10,6 +10,24 @@ const lwcResolver = require('@lwc/module-resolver')
 
 const EMPTY_STYLE = resolve(__dirname, 'mocks', 'empty-style.js')
 
+function isImplicitHTMLImport(importee: string, importer: string) {
+    return (
+        extname(importer) === '.js' &&
+        extname(importee) === '.html' &&
+        dirname(importer) === dirname(importee) &&
+        basename(importer, '.js') === basename(importee, '.html')
+    )
+}
+
+function isImplicitCssImport(importee: string, importer: string) {
+    return (
+        extname(importee) === '.css' &&
+        extname(importer) === '.html' &&
+        (basename(importee, '.css') === basename(importer, '.html') ||
+            basename(importee, '.scoped.css') === basename(importer, '.html'))
+    );
+}
+
 /**
  * Webpack plugin to resolve LWC modules.
  */
@@ -69,15 +87,6 @@ export class LwcModuleResolverPlugin {
         }
     }
 
-    isImplicitHTMLImport(importee: string, importer: string) {
-        return (
-            extname(importer) === '.js' &&
-            extname(importee) === '.html' &&
-            dirname(importer) === dirname(importee) &&
-            basename(importer, '.js') === basename(importee, '.html')
-        )
-    }
-
     resolveFile(req: any, ctx: any, cb: any) {
         const { path: resourcePath, query } = req
         const extFilename = extname(resourcePath)
@@ -88,9 +97,17 @@ export class LwcModuleResolverPlugin {
 
         this.fs.stat(resourcePath, (err: { code: string } | null) => {
             if (err !== null && err.code === 'ENOENT') {
+                const isCSS = extFilename === '.css';
                 if (
-                    extFilename === '.css' ||
-                    this.isImplicitHTMLImport(resourcePath, req.context.issuer)
+                    isCSS && 
+                    !isImplicitCssImport(resourcePath, req.context.issuer)
+                ) {
+                    // warning for a missing non-implicit CSS import
+                    console.warn(`The imported CSS file ${resourcePath} does not exist: Importing it as undefined.`)
+                }
+                if (
+                    isCSS ||
+                    isImplicitHTMLImport(resourcePath, req.context.issuer)
                 ) {
                     return cb(null, {
                         path: EMPTY_STYLE,
