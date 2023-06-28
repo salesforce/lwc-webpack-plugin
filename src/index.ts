@@ -108,15 +108,6 @@ module.exports = class Plugin {
         // Specify known package aliases
         alias['lwc'] = require.resolve('@lwc/engine-dom')
         alias['wire-service'] = require.resolve('@lwc/wire-service')
-        // the 'main' property for @lwc/synthetic-shadow refers to a file that
-        // simply logs an error message. This needs to be fixed up to directly
-        // specify the actual implementation, which lives under
-        // /dist/synthetic-shadow.js. Note: this depends on the internal file
-        // structure of this component, and there is a little fragile, if the
-        // module ever changes where this implementation lives.
-        alias['@lwc/synthetic-shadow'] = require.resolve(
-            '@lwc/synthetic-shadow/dist/synthetic-shadow.js'
-        )
 
         if (compiler.options.resolve.extensions) {
             compiler.options.resolve.extensions.push(...EXTENSIONS)
