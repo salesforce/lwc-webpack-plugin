@@ -118,11 +118,11 @@ __webpack_require__.r(__webpack_exports__);
   renderedCallback() {
     console.log('yolo');
   }
-  /*LWC compiler v2.23.2*/
-
-
+  /*LWC compiler v3.6.0*/
 }, {
-  tmpl: _component_html__WEBPACK_IMPORTED_MODULE_0__["default"]
+  tmpl: _component_html__WEBPACK_IMPORTED_MODULE_0__["default"],
+  sel: "x-component",
+  apiVersion: 59
 }));
 })();
 

@@ -27,21 +27,20 @@ const $fragment1 = lwc__WEBPACK_IMPORTED_MODULE_0__.parseFragment`<h1${3}>hello<
 function tmpl($api, $cmp, $slotset, $ctx) {
   const {st: api_static_fragment} = $api;
   return [api_static_fragment($fragment1(), 1)];
-  /*LWC compiler v2.23.2*/
+  /*LWC compiler v3.6.0*/
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,lwc__WEBPACK_IMPORTED_MODULE_0__.registerTemplate)(tmpl));
 tmpl.stylesheets = [];
 
 
 if (_component_css__WEBPACK_IMPORTED_MODULE_1__["default"]) {
-  tmpl.stylesheets.push.apply(tmpl.stylesheets, _component_css__WEBPACK_IMPORTED_MODULE_1__["default"])
+  tmpl.stylesheets.push.apply(tmpl.stylesheets, _component_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
 }
 if (_component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_2__["default"]) {
-  tmpl.stylesheets.push.apply(tmpl.stylesheets, _component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_2__["default"])
+  tmpl.stylesheets.push.apply(tmpl.stylesheets, _component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_2__["default"]);
 }
-if (_component_css__WEBPACK_IMPORTED_MODULE_1__["default"] || _component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_2__["default"]) {
-  tmpl.stylesheetToken = "x-component_component"
-}
+tmpl.stylesheetToken = "lwc-6a8uqob2ku4";
+tmpl.legacyStylesheetToken = "x-component_component";
 (0,lwc__WEBPACK_IMPORTED_MODULE_0__.freezeTemplate)(tmpl);
 
 
@@ -179,9 +178,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,lwc__WEBPACK_IMPORTED_MODULE_1__.registerComponent)(class extends lwc__WEBPACK_IMPORTED_MODULE_1__.LightningElement {
-  /*LWC compiler v2.23.2*/
+  /*LWC compiler v3.6.0*/
 }, {
-  tmpl: _component_html__WEBPACK_IMPORTED_MODULE_0__["default"]
+  tmpl: _component_html__WEBPACK_IMPORTED_MODULE_0__["default"],
+  sel: "x-component",
+  apiVersion: 59
 }));
 })();
 
