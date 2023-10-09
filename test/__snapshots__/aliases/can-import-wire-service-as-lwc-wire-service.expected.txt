@@ -2,26 +2,32 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./node_modules/@lwc/wire-service/dist/wire-service.cjs.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/@lwc/wire-service/dist/wire-service.cjs.js ***!
-  \*****************************************************************/
+/***/ "./node_modules/@lwc/wire-service/dist/index.cjs.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@lwc/wire-service/dist/index.cjs.js ***!
+  \**********************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 /**
- * Copyright (C) 2018 salesforce.com, inc.
+ * Copyright (C) 2023 salesforce.com, inc.
  */
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /**
- * Copyright (C) 2018 salesforce.com, inc.
+ * Copyright (C) 2023 salesforce.com, inc.
+ */
+/*
+ * Copyright (c) 2018, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: MIT
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
  */
 function isUndefined(obj) {
     return obj === undefined;
 }
-/** version: 2.23.2 */
+/** version: 3.6.0 */
 
 /*
  * Copyright (c) 2018, salesforce.com, inc.
@@ -199,7 +205,8 @@ class LegacyWireAdapterBridge {
 exports.ValueChangedEvent = ValueChangedEvent;
 exports.register = register;
 exports.registerWireService = registerWireService;
-/** version: 2.23.2 */
+/** version: 3.6.0 */
+//# sourceMappingURL=index.cjs.js.map
 
 
 /***/ })
@@ -250,7 +257,7 @@ var __webpack_exports__ = {};
   !*** ./test/fixtures/aliases/importWireService.js ***!
   \****************************************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var wire_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! wire-service */ "./node_modules/@lwc/wire-service/dist/wire-service.cjs.js");
+/* harmony import */ var wire_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! wire-service */ "./node_modules/@lwc/wire-service/dist/index.cjs.js");
 
 
 console.log(wire_service__WEBPACK_IMPORTED_MODULE_0__.register)

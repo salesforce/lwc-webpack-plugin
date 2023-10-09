@@ -15,8 +15,9 @@ __webpack_require__.r(__webpack_exports__);
 function stylesheet(token, useActualHostSelector, useNativeDirPseudoclass) {
   var shadowSelector = token ? ("[" + token + "]") : "";
   var hostSelector = token ? ("[" + token + "-host]") : "";
+  var suffixToken = token ? ("-" + token) : "";
   return "h1" + shadowSelector + " {color: chocolate;}";
-  /*LWC compiler v2.23.2*/
+  /*LWC compiler v3.6.0*/
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([stylesheet]);
 
@@ -47,21 +48,20 @@ const $fragment1 = lwc__WEBPACK_IMPORTED_MODULE_0__.parseFragment`<h1${3}>a</h1>
 function tmpl($api, $cmp, $slotset, $ctx) {
   const {st: api_static_fragment} = $api;
   return [api_static_fragment($fragment1(), 1)];
-  /*LWC compiler v2.23.2*/
+  /*LWC compiler v3.6.0*/
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,lwc__WEBPACK_IMPORTED_MODULE_0__.registerTemplate)(tmpl));
 tmpl.stylesheets = [];
 
 
 if (_a_css__WEBPACK_IMPORTED_MODULE_1__["default"]) {
-  tmpl.stylesheets.push.apply(tmpl.stylesheets, _a_css__WEBPACK_IMPORTED_MODULE_1__["default"])
+  tmpl.stylesheets.push.apply(tmpl.stylesheets, _a_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
 }
 if (_a_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_2__["default"]) {
-  tmpl.stylesheets.push.apply(tmpl.stylesheets, _a_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_2__["default"])
+  tmpl.stylesheets.push.apply(tmpl.stylesheets, _a_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_2__["default"]);
 }
-if (_a_css__WEBPACK_IMPORTED_MODULE_1__["default"] || _a_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_2__["default"]) {
-  tmpl.stylesheetToken = "x-component_a"
-}
+tmpl.stylesheetToken = "lwc-1m8j35b2s71";
+tmpl.legacyStylesheetToken = "x-component_a";
 (0,lwc__WEBPACK_IMPORTED_MODULE_0__.freezeTemplate)(tmpl);
 
 
@@ -92,21 +92,20 @@ const $fragment1 = lwc__WEBPACK_IMPORTED_MODULE_0__.parseFragment`<h1${3}>b</h1>
 function tmpl($api, $cmp, $slotset, $ctx) {
   const {st: api_static_fragment} = $api;
   return [api_static_fragment($fragment1(), 1)];
-  /*LWC compiler v2.23.2*/
+  /*LWC compiler v3.6.0*/
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,lwc__WEBPACK_IMPORTED_MODULE_0__.registerTemplate)(tmpl));
 tmpl.stylesheets = [];
 
 
 if (_b_css__WEBPACK_IMPORTED_MODULE_1__["default"]) {
-  tmpl.stylesheets.push.apply(tmpl.stylesheets, _b_css__WEBPACK_IMPORTED_MODULE_1__["default"])
+  tmpl.stylesheets.push.apply(tmpl.stylesheets, _b_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
 }
 if (_b_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_2__["default"]) {
-  tmpl.stylesheets.push.apply(tmpl.stylesheets, _b_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_2__["default"])
+  tmpl.stylesheets.push.apply(tmpl.stylesheets, _b_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_2__["default"]);
 }
-if (_b_css__WEBPACK_IMPORTED_MODULE_1__["default"] || _b_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_2__["default"]) {
-  tmpl.stylesheetToken = "x-component_b"
-}
+tmpl.stylesheetToken = "lwc-3cniaulee24";
+tmpl.legacyStylesheetToken = "x-component_b";
 (0,lwc__WEBPACK_IMPORTED_MODULE_0__.freezeTemplate)(tmpl);
 
 
@@ -252,15 +251,12 @@ __webpack_require__.r(__webpack_exports__);
     super(...args);
     this.renderB = false;
   }
-
   renderedCallback() {
     const template = this.renderB ? _b_html__WEBPACK_IMPORTED_MODULE_3__["default"] : _a_html__WEBPACK_IMPORTED_MODULE_2__["default"];
     this.renderB = !this.renderB;
     return template;
   }
-  /*LWC compiler v2.23.2*/
-
-
+  /*LWC compiler v3.6.0*/
 }, {
   publicProps: {
     renderB: {
@@ -268,7 +264,9 @@ __webpack_require__.r(__webpack_exports__);
     }
   }
 }), {
-  tmpl: _component_html__WEBPACK_IMPORTED_MODULE_1__["default"]
+  tmpl: _component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
+  sel: "x-component",
+  apiVersion: 59
 }));
 })();
 
