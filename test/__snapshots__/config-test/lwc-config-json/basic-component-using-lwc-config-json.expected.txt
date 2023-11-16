@@ -44,7 +44,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const $fragment1 = lwc__WEBPACK_IMPORTED_MODULE_0__.parseFragment`<h1${3}>hello world from a simple module</h1>`;
+const $fragment1 = (0,lwc__WEBPACK_IMPORTED_MODULE_0__.parseFragment)`<h1${3}>hello world from a simple module</h1>`;
 function tmpl($api, $cmp, $slotset, $ctx) {
   const {st: api_static_fragment} = $api;
   return [api_static_fragment($fragment1(), 1)];
