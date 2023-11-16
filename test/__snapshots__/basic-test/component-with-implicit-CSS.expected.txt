@@ -27,7 +27,7 @@ const $fragment1 = lwc__WEBPACK_IMPORTED_MODULE_0__.parseFragment`<h1${3}>hello<
 function tmpl($api, $cmp, $slotset, $ctx) {
   const {st: api_static_fragment} = $api;
   return [api_static_fragment($fragment1(), 1)];
-  /*LWC compiler v5.0.0*/
+  /*LWC compiler v5.0.2*/
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,lwc__WEBPACK_IMPORTED_MODULE_0__.registerTemplate)(tmpl));
 tmpl.stylesheets = [];
@@ -53,7 +53,7 @@ tmpl.legacyStylesheetToken = "x-component_component";
 /***/ ((__unused_webpack_module, exports) => {
 
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
 /*
  * Copyright (c) 2022, salesforce.com, inc.
  * All rights reserved.
@@ -72,7 +72,7 @@ exports["default"] = undefined;
 /***/ ((__unused_webpack_module, exports) => {
 
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
 /*
  * Copyright (c) 2022, salesforce.com, inc.
  * All rights reserved.
@@ -178,7 +178,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,lwc__WEBPACK_IMPORTED_MODULE_1__.registerComponent)(class extends lwc__WEBPACK_IMPORTED_MODULE_1__.LightningElement {
-  /*LWC compiler v5.0.0*/
+  /*LWC compiler v5.0.2*/
 }, {
   tmpl: _component_html__WEBPACK_IMPORTED_MODULE_0__["default"],
   sel: "x-component",
