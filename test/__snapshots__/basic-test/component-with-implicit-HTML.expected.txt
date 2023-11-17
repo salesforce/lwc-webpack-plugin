@@ -9,7 +9,7 @@
 /***/ ((__unused_webpack_module, exports) => {
 
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
 /*
  * Copyright (c) 2022, salesforce.com, inc.
  * All rights reserved.
@@ -118,7 +118,7 @@ __webpack_require__.r(__webpack_exports__);
   renderedCallback() {
     console.log('yolo');
   }
-  /*LWC compiler v5.0.0*/
+  /*LWC compiler v5.0.2*/
 }, {
   tmpl: _component_html__WEBPACK_IMPORTED_MODULE_0__["default"],
   sel: "x-component",
