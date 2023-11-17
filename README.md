@@ -37,12 +37,13 @@ module.exports = {
 }
 ```
 
-The plugin takes also two additional configuration options:
+The plugin takes the following additional configuration options:
 
--   `stylesheetConfig`
 -   `outputConfig`
 
 These options are 1:1 mappings of the LWC Compiler options, which are documented [here](https://github.com/salesforce/lwc/tree/master/packages/%40lwc/compiler#apis).
+
+`stylesheetConfig` has been deprecated as of lwc [v3.1.3](https://github.com/salesforce/lwc/releases/tag/v3.1.3) and results in a NOOP.
 
 Read more about Lightning Web Components [here](https://github.com/muenzpraeger/create-lwc-app).
 
