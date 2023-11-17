@@ -84,7 +84,7 @@ module.exports = class Plugin {
     apply(compiler: Compiler) {
         const {
             modules = [],
-            stylesheetConfig = {},
+            stylesheetConfig,
             outputConfig = {},
             experimentalDynamicComponent = {}
         } = this.config || {}
@@ -93,11 +93,6 @@ module.exports = class Plugin {
 
             compiler.options.resolve.plugins = [resolverPlugin]
             compiler.options.resolveLoader.plugins = [resolverPlugin]
-
-            let rules = compiler.options.module.rules
-            if (rules === undefined) {
-                rules = compiler.options.module.rules = []
-            }
         })
 
         let { alias } = compiler.options.resolve
@@ -122,7 +117,7 @@ module.exports = class Plugin {
         } catch (error) {
             // v3 LWC packages do not require the synthetic-shadow resolution
         }
-        
+
 
         if (compiler.options.resolve.extensions) {
             compiler.options.resolve.extensions.push(...EXTENSIONS)
