@@ -29,14 +29,20 @@ module.exports = function loader (source: any) {
         resourceQuery &&
         new NodeURLSearchParams(resourceQuery).get('scoped') === 'true'
 
-    const { code } = compiler.transformSync(codeTransformed, resourcePath, {
-            name: info.name,
-            namespace: info.ns,
-            stylesheetConfig,
-            outputConfig,
-            experimentalDynamicComponent,
-            scopedStyles
-        })
+    const compilerConfig = {
+        name: info.name,
+        namespace: info.ns,
+        stylesheetConfig,
+        outputConfig,
+        experimentalDynamicComponent,
+        scopedStyles
+    };
+    // Avoid passing stylesheetConfig when undefined to avoid deprecation warning (lwc v3.1.3)
+    if (compilerConfig.stylesheetConfig === undefined) {
+        delete compilerConfig.stylesheetConfig;
+    }
+
+    const { code } = compiler.transformSync(codeTransformed, resourcePath, compilerConfig);
 
     return code
 }

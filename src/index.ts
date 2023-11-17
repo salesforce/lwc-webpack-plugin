@@ -84,7 +84,7 @@ module.exports = class Plugin {
     apply(compiler: Compiler) {
         const {
             modules = [],
-            stylesheetConfig = {},
+            stylesheetConfig,
             outputConfig = {},
             experimentalDynamicComponent = {}
         } = this.config || {}
