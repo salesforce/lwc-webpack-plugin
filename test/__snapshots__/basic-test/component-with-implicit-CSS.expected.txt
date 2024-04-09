@@ -26,8 +26,8 @@ __webpack_require__.r(__webpack_exports__);
 const $fragment1 = (0,lwc__WEBPACK_IMPORTED_MODULE_0__.parseFragment)`<h1${3}>hello</h1>`;
 function tmpl($api, $cmp, $slotset, $ctx) {
   const {st: api_static_fragment} = $api;
-  return [api_static_fragment($fragment1(), 1)];
-  /*LWC compiler v5.0.2*/
+  return [api_static_fragment($fragment1, 1)];
+  /*LWC compiler v6.5.0*/
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,lwc__WEBPACK_IMPORTED_MODULE_0__.registerTemplate)(tmpl));
 tmpl.stylesheets = [];
@@ -178,11 +178,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,lwc__WEBPACK_IMPORTED_MODULE_1__.registerComponent)(class extends lwc__WEBPACK_IMPORTED_MODULE_1__.LightningElement {
-  /*LWC compiler v5.0.2*/
+  /*LWC compiler v6.5.0*/
 }, {
   tmpl: _component_html__WEBPACK_IMPORTED_MODULE_0__["default"],
   sel: "x-component",
-  apiVersion: 60
+  apiVersion: 61
 }));
 })();
 
