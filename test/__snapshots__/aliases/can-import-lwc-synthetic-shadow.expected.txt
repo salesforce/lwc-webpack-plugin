@@ -8,10 +8,14 @@
 /***/ (() => {
 
 /**
- * Copyright (C) 2023 salesforce.com, inc.
+ * Copyright (c) 2024 Salesforce, Inc.
  */
+if (!globalThis.lwcRuntimeFlags) {
+  Object.defineProperty(globalThis, 'lwcRuntimeFlags', { value: Object.create(null) });
+}
+if (!lwcRuntimeFlags.ENABLE_FORCE_SHADOW_MIGRATE_MODE) {
 /**
- * Copyright (C) 2023 salesforce.com, inc.
+ * Copyright (c) 2024 Salesforce, Inc.
  */
 /*
  * Copyright (c) 2018, salesforce.com, inc.
@@ -19,21 +23,40 @@
  * SPDX-License-Identifier: MIT
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
  */
+/**
+ *
+ * @param value
+ * @param msg
+ */
 function invariant(value, msg) {
     if (!value) {
         throw new Error(`Invariant Violation: ${msg}`);
     }
 }
+/**
+ *
+ * @param value
+ * @param msg
+ */
 function isTrue$1(value, msg) {
     if (!value) {
         throw new Error(`Assert Violation: ${msg}`);
     }
 }
+/**
+ *
+ * @param value
+ * @param msg
+ */
 function isFalse$1(value, msg) {
     if (value) {
         throw new Error(`Assert Violation: ${msg}`);
     }
 }
+/**
+ *
+ * @param msg
+ */
 function fail(msg) {
     throw new Error(msg);
 }
@@ -47,62 +70,134 @@ var assert = /*#__PURE__*/Object.freeze({
 });
 
 /*
- * Copyright (c) 2018, salesforce.com, inc.
+ * Copyright (c) 2024, Salesforce, Inc.
  * All rights reserved.
  * SPDX-License-Identifier: MIT
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
  */
-const { assign, create, defineProperties, defineProperty, freeze, getOwnPropertyDescriptor, getOwnPropertyDescriptors, getOwnPropertyNames, getPrototypeOf, hasOwnProperty, isFrozen, keys, seal, setPrototypeOf, } = Object;
+const { 
+/** Detached {@linkcode Object.assign}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign MDN Reference}. */
+assign, 
+/** Detached {@linkcode Object.create}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create MDN Reference}. */
+create, 
+/** Detached {@linkcode Object.defineProperties}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties MDN Reference}. */
+defineProperties, 
+/** Detached {@linkcode Object.defineProperty}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty MDN Reference}. */
+defineProperty, 
+/** Detached {@linkcode Object.entries}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries MDN Reference}. */
+entries, 
+/** Detached {@linkcode Object.freeze}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze MDN Reference}. */
+freeze, 
+/** Detached {@linkcode Object.getOwnPropertyDescriptor}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor MDN Reference}. */
+getOwnPropertyDescriptor, 
+/** Detached {@linkcode Object.getOwnPropertyDescriptors}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptors MDN Reference}. */
+getOwnPropertyDescriptors, 
+/** Detached {@linkcode Object.getOwnPropertyNames}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames MDN Reference}. */
+getOwnPropertyNames, 
+/** Detached {@linkcode Object.getPrototypeOf}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getPrototypeOf MDN Reference}. */
+getPrototypeOf, 
+/** Detached {@linkcode Object.hasOwnProperty}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty MDN Reference}. */
+hasOwnProperty, 
+/** Detached {@linkcode Object.isFrozen}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/isFrozen MDN Reference}. */
+isFrozen, 
+/** Detached {@linkcode Object.keys}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys MDN Reference}. */
+keys, 
+/** Detached {@linkcode Object.seal}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal MDN Reference}. */
+seal, 
+/** Detached {@linkcode Object.setPrototypeOf}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf MDN Reference}. */
+setPrototypeOf, } = Object;
+/** Detached {@linkcode Array.isArray}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray MDN Reference}. */
 const { isArray } = Array;
-const { concat: ArrayConcat, copyWithin: ArrayCopyWithin, every: ArrayEvery, fill: ArrayFill, filter: ArrayFilter, find: ArrayFind, findIndex: ArrayFindIndex, includes: ArrayIncludes, indexOf: ArrayIndexOf, join: ArrayJoin, map: ArrayMap, pop: ArrayPop, push: ArrayPush, reduce: ArrayReduce, reverse: ArrayReverse, shift: ArrayShift, slice: ArraySlice, some: ArraySome, sort: ArraySort, splice: ArraySplice, unshift: ArrayUnshift, forEach, } = Array.prototype;
+// For some reason, JSDoc don't get picked up for multiple renamed destructured constants (even
+// though it works fine for one, e.g. isArray), so comments for these are added to the export
+// statement, rather than this declaration.
+const { concat: ArrayConcat, copyWithin: ArrayCopyWithin, every: ArrayEvery, fill: ArrayFill, filter: ArrayFilter, find: ArrayFind, findIndex: ArrayFindIndex, includes: ArrayIncludes, indexOf: ArrayIndexOf, join: ArrayJoin, map: ArrayMap, pop: ArrayPop, push: ArrayPush, reduce: ArrayReduce, reverse: ArrayReverse, shift: ArrayShift, slice: ArraySlice, some: ArraySome, sort: ArraySort, splice: ArraySplice, unshift: ArrayUnshift, forEach, // Weird anomaly!
+ } = Array.prototype;
+/**
+ * Determines whether the argument is `undefined`.
+ * @param obj Value to test
+ * @returns `true` if the value is `undefined`.
+ */
 function isUndefined(obj) {
     return obj === undefined;
 }
+/**
+ * Determines whether the argument is `null`.
+ * @param obj Value to test
+ * @returns `true` if the value is `null`.
+ */
 function isNull(obj) {
     return obj === null;
 }
+/**
+ * Determines whether the argument is `true`.
+ * @param obj Value to test
+ * @returns `true` if the value is `true`.
+ */
 function isTrue(obj) {
     return obj === true;
 }
+/**
+ * Determines whether the argument is `false`.
+ * @param obj Value to test
+ * @returns `true` if the value is `false`.
+ */
 function isFalse(obj) {
     return obj === false;
 }
+/**
+ * Determines whether the argument is a function.
+ * @param obj Value to test
+ * @returns `true` if the value is a function.
+ */
+// Replacing `Function` with a narrower type that works for all our use cases is tricky...
+// eslint-disable-next-line @typescript-eslint/ban-types
 function isFunction(obj) {
     return typeof obj === 'function';
 }
+/**
+ * Determines whether the argument is an object or null.
+ * @param obj Value to test
+ * @returns `true` if the value is an object or null.
+ */
 function isObject(obj) {
     return typeof obj === 'object';
 }
 const OtS = {}.toString;
+/**
+ * Converts the argument to a string, safely accounting for objects with "null" prototype.
+ * Note that `toString(null)` returns `"[object Null]"` rather than `"null"`.
+ * @param obj Value to convert to a string.
+ * @returns String representation of the value.
+ */
 function toString(obj) {
-    if (obj && obj.toString) {
+    if (obj?.toString) {
         // Arrays might hold objects with "null" prototype So using
         // Array.prototype.toString directly will cause an error Iterate through
         // all the items and handle individually.
         if (isArray(obj)) {
+            // This behavior is slightly different from Array#toString:
+            // 1. Array#toString calls `this.join`, rather than Array#join
+            // Ex: arr = []; arr.join = () => 1; arr.toString() === 1; toString(arr) === ''
+            // 2. Array#toString delegates to Object#toString if `this.join` is not a function
+            // Ex: arr = []; arr.join = 'no'; arr.toString() === '[object Array]; toString(arr) = ''
+            // 3. Array#toString converts null/undefined to ''
+            // Ex: arr = [null, undefined]; arr.toString() === ','; toString(arr) === '[object Null],undefined'
+            // 4. Array#toString converts recursive references to arrays to ''
+            // Ex: arr = [1]; arr.push(arr, 2); arr.toString() === '1,,2'; toString(arr) throws
+            // Ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString
             return ArrayJoin.call(ArrayMap.call(obj, toString), ',');
         }
         return obj.toString();
     }
     else if (typeof obj === 'object') {
+        // This catches null and returns "[object Null]". Weird, but kept for backwards compatibility.
         return OtS.call(obj);
     }
     else {
-        return obj + '';
+        return String(obj);
     }
 }
-
-/*
- * Copyright (c) 2018, salesforce.com, inc.
- * All rights reserved.
- * SPDX-License-Identifier: MIT
- * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
- */
-// See browser support for globalThis:
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis#browser_compatibility
-/* istanbul ignore next */
-// @ts-ignore
-const _globalThis = typeof globalThis === 'object' ? globalThis : window;
 
 /*
  * Copyright (c) 2023, Salesforce.com, inc.
@@ -122,16 +217,15 @@ const KEY__LEGACY_SHADOW_TOKEN_PRIVATE = '$$LegacyShadowTokenKey$$';
 const KEY__SYNTHETIC_MODE = '$$lwc-synthetic-mode';
 const KEY__NATIVE_GET_ELEMENT_BY_ID = '$nativeGetElementById$';
 const KEY__NATIVE_QUERY_SELECTOR_ALL = '$nativeQuerySelectorAll$';
-/** version: 5.0.2 */
+/** version: 6.5.0 */
 
 /**
- * Copyright (C) 2023 salesforce.com, inc.
+ * Copyright (c) 2024 Salesforce, Inc.
  */
-// eslint-disable-next-line no-restricted-properties
-if (!_globalThis.lwcRuntimeFlags) {
-    Object.defineProperty(_globalThis, 'lwcRuntimeFlags', { value: create(null) });
+if (!globalThis.lwcRuntimeFlags) {
+    Object.defineProperty(globalThis, 'lwcRuntimeFlags', { value: create(null) });
 }
-/** version: 5.0.2 */
+/** version: 6.5.0 */
 
 /*
  * Copyright (c) 2018, salesforce.com, inc.
@@ -154,6 +248,7 @@ const ownerDocumentGetter = getOwnPropertyDescriptor(nodePrototype, 'ownerDocume
 const parentElementGetter = getOwnPropertyDescriptor(nodePrototype, 'parentElement').get;
 const textContextSetter = getOwnPropertyDescriptor(nodePrototype, 'textContent').set;
 const childNodesGetter = getOwnPropertyDescriptor(nodePrototype, 'childNodes').get;
+const nextSiblingGetter = getOwnPropertyDescriptor(nodePrototype, 'nextSibling').get;
 const isConnected = hasOwnProperty.call(nodePrototype, 'isConnected')
     ? getOwnPropertyDescriptor(nodePrototype, 'isConnected').get
     : function () {
@@ -291,54 +386,6 @@ const NativeShadowRoot = ShadowRoot;
 const isInstanceOfNativeShadowRoot = (node) => node instanceof NativeShadowRoot;
 
 /*
- * Copyright (c) 2018, salesforce.com, inc.
- * All rights reserved.
- * SPDX-License-Identifier: MIT
- * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
- */
-// Helpful for tests running with jsdom
-function getOwnerDocument(node) {
-    const doc = ownerDocumentGetter.call(node);
-    // if doc is null, it means `this` is actually a document instance
-    return doc === null ? node : doc;
-}
-function getOwnerWindow(node) {
-    const doc = getOwnerDocument(node);
-    const win = defaultViewGetter.call(doc);
-    if (win === null) {
-        // this method should never be called with a node that is not part
-        // of a qualifying connected node.
-        throw new TypeError();
-    }
-    return win;
-}
-let skipGlobalPatching;
-// Note: we deviate from native shadow here, but are not fixing
-// due to backwards compat: https://github.com/salesforce/lwc/pull/3103
-function isGlobalPatchingSkipped(node) {
-    // we lazily compute this value instead of doing it during evaluation, this helps
-    // for apps that are setting this after the engine code is evaluated.
-    if (isUndefined(skipGlobalPatching)) {
-        const ownerDocument = getOwnerDocument(node);
-        skipGlobalPatching =
-            ownerDocument.body &&
-                getAttribute.call(ownerDocument.body, 'data-global-patching-bypass') ===
-                    'temporary-bypass';
-    }
-    return isTrue(skipGlobalPatching);
-}
-function arrayFromCollection(collection) {
-    const size = collection.length;
-    const cloned = [];
-    if (size > 0) {
-        for (let i = 0; i < size; i++) {
-            cloned[i] = collection[i];
-        }
-    }
-    return cloned;
-}
-
-/*
  * Copyright (c) 2023, Salesforce.com, inc.
  * All rights reserved.
  * SPDX-License-Identifier: MIT
@@ -384,6 +431,8 @@ function getNodeNearestOwnerKey(node) {
             return hostKey;
         }
         host = parentNodeGetter.call(host);
+        // Elements slotted from top level light DOM into synthetic shadow
+        // reach the slot tag from the shadow element first
         if (!isNull(host) && isSyntheticSlotElement(host)) {
             return undefined;
         }
@@ -396,6 +445,7 @@ function getNodeKey(node) {
  * This function does not traverse up for performance reasons, but is sufficient for most use
  * cases. If we need to traverse up and verify those nodes that don't have owner key, use
  * isNodeDeepShadowed instead.
+ * @param node
  */
 function isNodeShadowed(node) {
     return !isUndefined(getNodeOwnerKey(node));
@@ -452,7 +502,7 @@ function isNodeSlotted(host, node) {
             // have different owner key. for slotted elements, this is possible
             // if the parent happens to be a slot.
             if (isSlotElement(parent)) {
-                /**
+                /*
                  * the slot parent might be allocated inside another slot, think of:
                  * <x-root> (<--- root element)
                  *    <x-parent> (<--- own by x-root)
@@ -607,7 +657,7 @@ function getFilteredChildNodes(node) {
         const resolver = getShadowRootResolver(getShadowRoot(node));
         // Typescript is inferring the wrong function type for this particular
         // overloaded method: https://github.com/Microsoft/TypeScript/issues/27972
-        // @ts-ignore type-mismatch
+        // @ts-expect-error type-mismatch
         return ArrayReduce.call(slots, (seed, slot) => {
             if (resolver === getShadowRootResolver(slot)) {
                 ArrayPush.apply(seed, getFilteredSlotAssignedNodes(slot));
@@ -926,12 +976,11 @@ function createStaticNodeList(items) {
  */
 // Walk up the DOM tree, collecting all shadow roots plus the document root
 function getAllRootNodes(node) {
-    var _a;
     const rootNodes = [];
     let currentRootNode = node.getRootNode();
     while (!isUndefined(currentRootNode)) {
         rootNodes.push(currentRootNode);
-        currentRootNode = (_a = currentRootNode.host) === null || _a === void 0 ? void 0 : _a.getRootNode();
+        currentRootNode = currentRootNode.host?.getRootNode();
     }
     return rootNodes;
 }
@@ -1077,6 +1126,7 @@ function createStaticHTMLCollection(items) {
  * based on the light-dom slotting mechanism. This applies to synthetic slot elements
  * and elements with shadow dom attached to them. It doesn't apply to native slot elements
  * because we don't want to patch the children getters for those elements.
+ * @param node
  */
 function hasMountedChildren(node) {
     return isSyntheticSlotElement(node) || isSyntheticShadowHost(node);
@@ -1183,7 +1233,11 @@ function cloneNodePatched(deep) {
 function childNodesGetterPatched() {
     if (isSyntheticShadowHost(this)) {
         const owner = getNodeOwner(this);
-        const childNodes = isNull(owner) ? [] : getAllMatches(owner, getFilteredChildNodes(this));
+        const filteredChildNodes = getFilteredChildNodes(this);
+        // No need to filter by owner for non-shadowed nodes
+        const childNodes = isNull(owner)
+            ? filteredChildNodes
+            : getAllMatches(owner, filteredChildNodes);
         return createStaticNodeList(childNodes);
     }
     // nothing to do here since this does not have a synthetic shadow attached to it
@@ -1199,6 +1253,7 @@ const nativeGetRootNode = _Node.prototype.getRootNode;
 const getDocumentOrRootNode = !isUndefined(nativeGetRootNode)
     ? nativeGetRootNode
     : function () {
+        // eslint-disable-next-line @typescript-eslint/no-this-alias
         let node = this;
         let nodeParent;
         while (!isNull((nodeParent = parentNodeGetter.call(node)))) {
@@ -1210,10 +1265,10 @@ const getDocumentOrRootNode = !isUndefined(nativeGetRootNode)
  * Get the shadow root
  * getNodeOwner() returns the host element that owns the given node
  * Note: getNodeOwner() returns null when running in native-shadow mode.
- *  Fallback to using the native getRootNode() to discover the root node.
- *  This is because, it is not possible to inspect the node and decide if it is part
- *  of a native shadow or the synthetic shadow.
- * @param {Node} node
+ * Fallback to using the native getRootNode() to discover the root node.
+ * This is because, it is not possible to inspect the node and decide if it is part
+ * of a native shadow or the synthetic shadow.
+ * @param node
  */
 function getNearestRoot(node) {
     const ownerNode = getNodeOwner(node);
@@ -1231,17 +1286,17 @@ function getNearestRoot(node) {
  *
  * If looking for a shadow root of a node by calling `node.getRootNode({composed: false})` or `node.getRootNode()`,
  *
- *  1. Try to identify the host element that owns the give node.
- *     i. Identify the shadow tree that the node belongs to
- *     ii. If the node belongs to a shadow tree created by engine, return the shadowRoot of the host element that owns the shadow tree
- *  2. The host identification logic returns null in two cases:
- *     i. The node does not belong to a shadow tree created by engine
- *     ii. The engine is running in native shadow dom mode
- *     If so, use the original Node.prototype.getRootNode to fetch the root node(or manually climb up the dom tree where getRootNode() is unsupported)
+ * 1. Try to identify the host element that owns the give node.
+ * i. Identify the shadow tree that the node belongs to
+ * ii. If the node belongs to a shadow tree created by engine, return the shadowRoot of the host element that owns the shadow tree
+ * 2. The host identification logic returns null in two cases:
+ * i. The node does not belong to a shadow tree created by engine
+ * ii. The engine is running in native shadow dom mode
+ * If so, use the original Node.prototype.getRootNode to fetch the root node(or manually climb up the dom tree where getRootNode() is unsupported)
  *
  * _Spec_: https://dom.spec.whatwg.org/#dom-node-getrootnode
- *
- **/
+ * @param options
+ */
 function getRootNodePatched(options) {
     const composed = isUndefined(options) ? false : !!options.composed;
     return isTrue(composed) ? getDocumentOrRootNode.call(this, options) : getNearestRoot(this);
@@ -1478,7 +1533,7 @@ function getEventHandler(listener) {
     }
 }
 function isEventListenerOrEventListenerObject(listener) {
-    return isFunction(listener) || isFunction(listener === null || listener === void 0 ? void 0 : listener.handleEvent);
+    return isFunction(listener) || isFunction(listener?.handleEvent);
 }
 const customElementToWrappedListeners = new WeakMap();
 function getEventMap(elm) {
@@ -1493,10 +1548,10 @@ function getEventMap(elm) {
  * Events dispatched on shadow roots actually end up being dispatched on their hosts. This means that the event.target
  * property of events dispatched on shadow roots always resolve to their host. This function understands this
  * abstraction and properly returns a reference to the shadow root when appropriate.
+ * @param event
  */
 function getActualTarget(event) {
-    var _a;
-    return (_a = eventToShadowRootMap.get(event)) !== null && _a !== void 0 ? _a : eventTargetGetter.call(event);
+    return eventToShadowRootMap.get(event) ?? eventTargetGetter.call(event);
 }
 const shadowRootEventListenerMap = new WeakMap();
 function getManagedShadowRootListener(listener) {
@@ -1633,7 +1688,7 @@ function detachDOMListener(elm, type, managedListener) {
 function addCustomElementEventListener(type, listener, _options) {
     if (true) {
         if (!isEventListenerOrEventListenerObject(listener)) {
-            throw new TypeError(`Invalid second argument for Element.addEventListener() in ${toString(this)} for event "${type}". Expected EventListener or EventListenerObject but received ${listener}.`);
+            throw new TypeError(`Invalid second argument for Element.addEventListener() in ${toString(this)} for event "${type}". Expected EventListener or EventListenerObject but received ${toString(listener)}.`);
         }
     }
     if (isEventListenerOrEventListenerObject(listener)) {
@@ -1650,7 +1705,7 @@ function removeCustomElementEventListener(type, listener, _options) {
 function addShadowRootEventListener(sr, type, listener, _options) {
     if (true) {
         if (!isEventListenerOrEventListenerObject(listener)) {
-            throw new TypeError(`Invalid second argument for ShadowRoot.addEventListener() in ${toString(sr)} for event "${type}". Expected EventListener or EventListenerObject but received ${listener}.`);
+            throw new TypeError(`Invalid second argument for ShadowRoot.addEventListener() in ${toString(sr)} for event "${type}". Expected EventListener or EventListenerObject but received ${toString(listener)}.`);
         }
     }
     if (isEventListenerOrEventListenerObject(listener)) {
@@ -1701,15 +1756,15 @@ defineProperty(_Node.prototype, KEY__SHADOW_RESOLVER, {
 });
 // The isUndefined check is because two copies of synthetic shadow may be loaded on the same page, and this
 // would throw an error if we tried to redefine it. Plus the whole point is to expose the native method.
-if (isUndefined(_globalThis[KEY__NATIVE_GET_ELEMENT_BY_ID])) {
-    defineProperty(_globalThis, KEY__NATIVE_GET_ELEMENT_BY_ID, {
+if (isUndefined(globalThis[KEY__NATIVE_GET_ELEMENT_BY_ID])) {
+    defineProperty(globalThis, KEY__NATIVE_GET_ELEMENT_BY_ID, {
         value: getElementById,
         configurable: true,
     });
 }
 // See note above.
-if (isUndefined(_globalThis[KEY__NATIVE_QUERY_SELECTOR_ALL])) {
-    defineProperty(_globalThis, KEY__NATIVE_QUERY_SELECTOR_ALL, {
+if (isUndefined(globalThis[KEY__NATIVE_QUERY_SELECTOR_ALL])) {
+    defineProperty(globalThis, KEY__NATIVE_QUERY_SELECTOR_ALL, {
         value: querySelectorAll,
         configurable: true,
     });
@@ -1925,7 +1980,7 @@ const NodePatchDescriptors = {
         value(evt) {
             eventToShadowRootMap.set(evt, this);
             // Typescript does not like it when you treat the `arguments` object as an array
-            // @ts-ignore type-mismatch
+            // @ts-expect-error type-mismatch
             return dispatchEvent.apply(getHost(this), arguments);
         },
     },
@@ -2212,6 +2267,57 @@ defineProperty(SyntheticShadowRoot, Symbol.hasInstance, {
  * SPDX-License-Identifier: MIT
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
  */
+function isSyntheticOrNativeShadowRoot(node) {
+    return isSyntheticShadowRoot(node) || isInstanceOfNativeShadowRoot(node);
+}
+// Helpful for tests running with jsdom
+function getOwnerDocument(node) {
+    const doc = ownerDocumentGetter.call(node);
+    // if doc is null, it means `this` is actually a document instance
+    return doc === null ? node : doc;
+}
+function getOwnerWindow(node) {
+    const doc = getOwnerDocument(node);
+    const win = defaultViewGetter.call(doc);
+    if (win === null) {
+        // this method should never be called with a node that is not part
+        // of a qualifying connected node.
+        throw new TypeError();
+    }
+    return win;
+}
+let skipGlobalPatching;
+// Note: we deviate from native shadow here, but are not fixing
+// due to backwards compat: https://github.com/salesforce/lwc/pull/3103
+function isGlobalPatchingSkipped(node) {
+    // we lazily compute this value instead of doing it during evaluation, this helps
+    // for apps that are setting this after the engine code is evaluated.
+    if (isUndefined(skipGlobalPatching)) {
+        const ownerDocument = getOwnerDocument(node);
+        skipGlobalPatching =
+            ownerDocument.body &&
+                getAttribute.call(ownerDocument.body, 'data-global-patching-bypass') ===
+                    'temporary-bypass';
+    }
+    return isTrue(skipGlobalPatching);
+}
+function arrayFromCollection(collection) {
+    const size = collection.length;
+    const cloned = [];
+    if (size > 0) {
+        for (let i = 0; i < size; i++) {
+            cloned[i] = collection[i];
+        }
+    }
+    return cloned;
+}
+
+/*
+ * Copyright (c) 2018, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: MIT
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
+ */
 /**
 @license
 Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
@@ -2245,8 +2351,7 @@ function pathComposer(startNode, composed) {
                 current = current.parentNode;
             }
         }
-        else if ((isSyntheticShadowRoot(current) || isInstanceOfNativeShadowRoot(current)) &&
-            (composed || current !== startRoot)) {
+        else if (isSyntheticOrNativeShadowRoot(current) && (composed || current !== startRoot)) {
             current = current.host;
         }
         else if (current instanceof _Node) {
@@ -2297,11 +2402,16 @@ function retarget(refNode, path) {
     for (let i = 0, ancestor, lastRoot, root, rootIdx; i < p$.length; i++) {
         ancestor = p$[i];
         root = ancestor instanceof Window ? ancestor : ancestor.getRootNode();
+        // Retarget to ancestor if ancestor is not shadowed
+        if (!isSyntheticOrNativeShadowRoot(root)) {
+            return ancestor;
+        }
         if (root !== lastRoot) {
             rootIdx = refNodePath.indexOf(root);
             lastRoot = root;
         }
-        if (!isSyntheticShadowRoot(root) || (!isUndefined(rootIdx) && rootIdx > -1)) {
+        // Retarget to ancestor if ancestor is shadowed by refNode's shadow root
+        if (!isUndefined(rootIdx) && rootIdx > -1) {
             return ancestor;
         }
     }
@@ -2547,7 +2657,7 @@ function setNodeObservers(node, observers) {
 }
 /**
  * Retarget the mutation record's target value to its shadowRoot
- * @param {MutationRecord} originalRecord
+ * @param originalRecord
  */
 function retargetMutationRecord(originalRecord) {
     const { addedNodes, removedNodes, target, type } = originalRecord;
@@ -2587,8 +2697,8 @@ function retargetMutationRecord(originalRecord) {
 /**
  * Utility to identify if a target node is being observed by the given observer
  * Start at the current node, if the observer is registered to observe the current node, the mutation qualifies
- * @param {MutationObserver} observer
- * @param {Node} target
+ * @param observer
+ * @param target
  */
 function isQualifiedObserver(observer, target) {
     let parentNode = target;
@@ -2609,8 +2719,8 @@ function isQualifiedObserver(observer, target) {
  * The key logic here is to determine if a given observer has been registered to observe any nodes
  * between the target node of a mutation record to the target's root node.
  * This function also retargets records when mutations occur directly under the shadow root
- * @param {MutationRecords[]} mutations
- * @param {MutationObserver} observer
+ * @param mutations
+ * @param observer
  */
 function filterMutationRecords(mutations, observer) {
     const result = [];
@@ -2692,7 +2802,7 @@ function getWrappedCallback(callback) {
  * Patched MutationObserver constructor.
  * 1. Wrap the callback to filter out MutationRecords based on dom ownership
  * 2. Add a property field to track all observed targets of the observer instance
- * @param {MutationCallback} callback
+ * @param callback
  */
 function PatchedMutationObserver(callback) {
     const wrappedCallback = getWrappedCallback(callback);
@@ -2719,8 +2829,8 @@ function patchedDisconnect() {
 /**
  * A single mutation observer can observe multiple nodes(target).
  * Maintain a list of all targets that the observer chooses to observe
- * @param {Node} target
- * @param {Object} options
+ * @param target
+ * @param options
  */
 function patchedObserve(target, options) {
     let targetObservers = getNodeObservers(target);
@@ -2774,8 +2884,13 @@ defineProperty(window, 'MutationObserver', {
 function patchedAddEventListener(type, listener, optionsOrCapture) {
     if (isSyntheticShadowHost(this)) {
         // Typescript does not like it when you treat the `arguments` object as an array
-        // @ts-ignore type-mismatch
+        // @ts-expect-error type-mismatch
         return addCustomElementEventListener.apply(this, arguments);
+    }
+    if (this instanceof _Node && isInstanceOfNativeShadowRoot(this.getRootNode())) {
+        // Typescript does not like it when you treat the `arguments` object as an array
+        // @ts-expect-error type-mismatch
+        return addEventListener.apply(this, arguments);
     }
     if (arguments.length < 2) {
         // Slow path, unlikely to be called frequently. We expect modern browsers to throw:
@@ -2785,7 +2900,7 @@ function patchedAddEventListener(type, listener, optionsOrCapture) {
             args[1] = getEventListenerWrapper(args[1]);
         }
         // Ignore types because we're passing through to native method
-        // @ts-ignore type-mismatch
+        // @ts-expect-error type-mismatch
         return addEventListener.apply(this, args);
     }
     // Fast path. This function is optimized to avoid ArraySlice because addEventListener is called
@@ -2797,7 +2912,7 @@ function patchedAddEventListener(type, listener, optionsOrCapture) {
 function patchedRemoveEventListener(_type, _listener, _optionsOrCapture) {
     if (isSyntheticShadowHost(this)) {
         // Typescript does not like it when you treat the `arguments` object as an array
-        // @ts-ignore type-mismatch
+        // @ts-expect-error type-mismatch
         return removeCustomElementEventListener.apply(this, arguments);
     }
     const args = ArraySlice.call(arguments);
@@ -2805,11 +2920,11 @@ function patchedRemoveEventListener(_type, _listener, _optionsOrCapture) {
         args[1] = getEventListenerWrapper(args[1]);
     }
     // Ignore types because we're passing through to native method
-    // @ts-ignore type-mismatch
+    // @ts-expect-error type-mismatch
     removeEventListener.apply(this, args);
     // Account for listeners that were added before this polyfill was applied
     // Typescript does not like it when you treat the `arguments` object as an array
-    // @ts-ignore type-mismatch
+    // @ts-expect-error type-mismatch
     removeEventListener.apply(this, arguments);
 }
 defineProperties(eventTargetPrototype, {
@@ -3033,7 +3148,7 @@ function getFilteredSlotFlattenNodes(slot) {
     const childNodes = arrayFromCollection(childNodesGetter.call(slot));
     // Typescript is inferring the wrong function type for this particular
     // overloaded method: https://github.com/Microsoft/TypeScript/issues/27972
-    // @ts-ignore type-mismatch
+    // @ts-expect-error type-mismatch
     return ArrayReduce.call(childNodes, (seed, child) => {
         if (child instanceof Element && isSlotElement(child)) {
             ArrayPush.apply(seed, getFilteredSlotFlattenNodes(child));
@@ -3058,9 +3173,8 @@ function assignedSlotGetterPatched() {
     }
     /**
      * The node is assigned to a slot if:
-     *  - it has a parent and its parent is a slot element
-     *  - and if the slot owner key is different than the node owner key.
-     *
+     * - it has a parent and its parent is a slot element
+     * - and if the slot owner key is different than the node owner key.
      * When the slot and the slotted node are 2 different shadow trees, the owner keys will be
      * different. When the slot is in a shadow tree and the slotted content is a light DOM node,
      * the light DOM node doesn't have an owner key and therefor the slot owner key will be
@@ -3175,6 +3289,8 @@ defineProperties(Text.prototype, {
 /**
  * This methods filters out elements that are not in the same shadow root of context.
  * It does not enforce shadow dom semantics if $context is not managed by LWC
+ * @param context
+ * @param unfilteredNodes
  */
 function getNonPatchedFilteredArrayOfNodes(context, unfilteredNodes) {
     let filtered;
@@ -3250,7 +3366,11 @@ function shadowRootGetterPatched() {
 }
 function childrenGetterPatched() {
     const owner = getNodeOwner(this);
-    const childNodes = isNull(owner) ? [] : getAllMatches(owner, getFilteredChildNodes(this));
+    const filteredChildNodes = getFilteredChildNodes(this);
+    // No need to filter by owner for non-shadowed nodes
+    const childNodes = isNull(owner)
+        ? filteredChildNodes
+        : getAllMatches(owner, filteredChildNodes);
     return createStaticHTMLCollection(ArrayFilter.call(childNodes, (node) => node instanceof Element));
 }
 function childElementCountGetterPatched() {
@@ -3586,7 +3706,7 @@ function hostElementFocus() {
         // observable differences for component authors between synthetic and native.
         const focusable = querySelector.call(this, FocusableSelector);
         if (!isNull(focusable)) {
-            // @ts-ignore type-mismatch
+            // @ts-expect-error type-mismatch
             focusable.focus.apply(focusable, arguments);
         }
         return;
@@ -3602,7 +3722,7 @@ function hostElementFocus() {
     let didFocus = false;
     while (!didFocus && focusables.length !== 0) {
         const focusable = focusables.shift();
-        // @ts-ignore type-mismatch
+        // @ts-expect-error type-mismatch
         focusable.focus.apply(focusable, arguments);
         // Get the root node of the current focusable in case it was slotted.
         const currentRootNode = focusable.getRootNode();
@@ -3883,6 +4003,7 @@ function tabIndexGetterPatched() {
 }
 /**
  * This method only applies to elements with a shadow attached to them
+ * @param value
  */
 function tabIndexSetterPatched(value) {
     // This tabIndex setter might be confusing unless it is understood that HTML
@@ -3964,7 +4085,7 @@ function focusPatched() {
         return;
     }
     // Typescript does not like it when you treat the `arguments` object as an array
-    // @ts-ignore type-mismatch
+    // @ts-expect-error type-mismatch
     focus.apply(this, arguments);
     // Restore state by enabling if originally enabled
     if (originallyEnabled) {
@@ -4004,7 +4125,7 @@ defineProperties(HTMLElement.prototype, {
     focus: {
         value() {
             // Typescript does not like it when you treat the `arguments` object as an array
-            // @ts-ignore type-mismatch
+            // @ts-expect-error type-mismatch
             focusPatched.apply(this, arguments);
         },
         enumerable: true,
@@ -4063,13 +4184,10 @@ function setShadowToken(node, shadowToken) {
 }
 /**
  * Patching Element.prototype.$shadowToken$ to mark elements a portal:
- *
- *  - we use a property to allow engines to set a custom attribute that should be
- *    placed into the element to sandbox the css rules defined for the template.
- *
- *  - this custom attribute must be unique.
- *
- **/
+ * - we use a property to allow engines to set a custom attribute that should be
+ * placed into the element to sandbox the css rules defined for the template.
+ * - this custom attribute must be unique.
+ */
 defineProperty(Element.prototype, KEY__SHADOW_TOKEN, {
     set(shadowToken) {
         const oldShadowToken = this[KEY__SHADOW_TOKEN_PRIVATE];
@@ -4088,9 +4206,13 @@ defineProperty(Element.prototype, KEY__SHADOW_TOKEN, {
 });
 function recursivelySetShadowResolver(node, fn) {
     node[KEY__SHADOW_RESOLVER] = fn;
-    const childNodes = childNodesGetter.call(node);
-    for (let i = 0, n = childNodes.length; i < n; i++) {
-        recursivelySetShadowResolver(childNodes[i], fn);
+    // Recurse using firstChild/nextSibling because browsers use a linked list under the hood to
+    // represent the DOM, so childNodes/children would cause an unnecessary array allocation.
+    // https://viethung.space/blog/2020/09/01/Browser-from-Scratch-DOM-API/#Choosing-DOM-tree-data-structure
+    let child = firstChildGetter.call(node);
+    while (!isNull(child)) {
+        recursivelySetShadowResolver(child, fn);
+        child = nextSiblingGetter.call(child);
     }
 }
 defineProperty(Element.prototype, KEY__SHADOW_STATIC, {
@@ -4124,7 +4246,7 @@ function setLegacyShadowToken(node, shadowToken) {
 /**
  * Patching Element.prototype.$legacyShadowToken$ to mark elements a portal:
  * Same as $shadowToken$ but for legacy CSS scope tokens.
- **/
+ */
 defineProperty(Element.prototype, KEY__LEGACY_SHADOW_TOKEN, {
     set(shadowToken) {
         const oldShadowToken = this[KEY__LEGACY_SHADOW_TOKEN_PRIVATE];
@@ -4238,18 +4360,14 @@ function markElementAsPortal(elm) {
 }
 /**
  * Patching Element.prototype.$domManual$ to mark elements as portal:
- *
- *  - we use a property to allow engines to signal that a particular element in
- *    a shadow supports manual insertion of child nodes.
- *
- *  - this signal comes as a boolean value, and we use it to install the MO instance
- *    onto the element, to propagate the $ownerKey$ and $shadowToken$ to all new
- *    child nodes.
- *
- *  - at the moment, there is no way to undo this operation, once the element is
- *    marked as $domManual$, setting it to false does nothing.
- *
- **/
+ * - we use a property to allow engines to signal that a particular element in
+ * a shadow supports manual insertion of child nodes.
+ * - this signal comes as a boolean value, and we use it to install the MO instance
+ * onto the element, to propagate the $ownerKey$ and $shadowToken$ to all new
+ * child nodes.
+ * - at the moment, there is no way to undo this operation, once the element is
+ * marked as $domManual$, setting it to false does nothing.
+ */
 // TODO [#1306]: rename this to $observerConnection$
 defineProperty(Element.prototype, '$domManual$', {
     set(v) {
@@ -4263,7 +4381,8 @@ defineProperty(Element.prototype, '$domManual$', {
     },
     configurable: true,
 });
-/** version: 5.0.2 */
+/** version: 6.5.0 */
+}
 //# sourceMappingURL=index.js.map
 
 

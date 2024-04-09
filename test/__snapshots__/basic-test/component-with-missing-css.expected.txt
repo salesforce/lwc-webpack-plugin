@@ -117,11 +117,11 @@ __webpack_require__.r(__webpack_exports__);
 var _class;
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,lwc__WEBPACK_IMPORTED_MODULE_1__.registerComponent)((_class = class extends lwc__WEBPACK_IMPORTED_MODULE_1__.LightningElement {
-  /*LWC compiler v5.0.2*/
+  /*LWC compiler v6.5.0*/
 }, _class.stylesheets = [_component_html__WEBPACK_IMPORTED_MODULE_0__["default"]], _class), {
   tmpl: _component_html__WEBPACK_IMPORTED_MODULE_0__["default"],
   sel: "x-component",
-  apiVersion: 60
+  apiVersion: 61
 }));
 })();
 
