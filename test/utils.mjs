@@ -66,7 +66,7 @@ async function testSnapshot(code) {
     // Replace LWC versions in the source code comments so that the snapshots don't change so frequently
     code = code
       .replace(/\/\*\* version: \d+\.\d+\.\d+ \*\//g, '/** version: X.X.X */')
-      .replace(/\/\*LWC compiler v6\.5\.1\*\//g, '/*LWC compiler vX.X.X*/');
+      .replace(/\/\*LWC compiler v\d+\.\d+\.\d+\*\//g, '/*LWC compiler vX.X.X*/');
     await snap(code)
 }
 
