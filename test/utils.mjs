@@ -11,6 +11,9 @@ import { createFsFromVolume, Volume } from 'memfs'
 import LwcWebpackPlugin from '../dist/index.js'
 import { promisify } from 'util'
 import { expect } from 'chai'
+import * as mochaSnap from "mocha-snap";
+
+const snap = mochaSnap.default.default
 
 const mfs = createFsFromVolume(new Volume())
 
@@ -59,7 +62,16 @@ function assertCodeIsValid(code) {
     expect(code).not.to.contain('Cannot find module')
 }
 
+async function testSnapshot(code) {
+    // Replace LWC versions in the source code comments so that the snapshots don't change so frequently
+    code = code
+      .replace(/\/\*\* version: \d+\.\d+\.\d+ \*\//g, '/** version: X.X.X */')
+      .replace(/\/\*LWC compiler v\d+\.\d+\.\d+\*\//g, '/*LWC compiler vX.X.X*/');
+    await snap(code)
+}
+
 export {
     bundle,
-    assertCodeIsValid
+    assertCodeIsValid,
+    testSnapshot
 }

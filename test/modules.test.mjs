@@ -4,11 +4,9 @@
  * SPDX-License-Identifier: MIT
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
  */
-import { assertCodeIsValid, bundle } from './utils.mjs'
-import * as mochaSnap from "mocha-snap"
+import {assertCodeIsValid, bundle, testSnapshot} from './utils.mjs'
 import path from 'path'
 import fs from 'fs/promises'
-const snap = mochaSnap.default.default
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname)
 
@@ -56,7 +54,7 @@ describe('modules configuration test', () => {
                 ]
             })
 
-            await snap(code)
+            await testSnapshot(code)
             assertCodeIsValid(code)
         })
     })
@@ -78,7 +76,7 @@ describe('modules configuration test', () => {
             ]
         })
 
-        await snap(code)
+        await testSnapshot(code)
         assertCodeIsValid(code)
     })
 })

@@ -217,7 +217,7 @@ const KEY__LEGACY_SHADOW_TOKEN_PRIVATE = '$$LegacyShadowTokenKey$$';
 const KEY__SYNTHETIC_MODE = '$$lwc-synthetic-mode';
 const KEY__NATIVE_GET_ELEMENT_BY_ID = '$nativeGetElementById$';
 const KEY__NATIVE_QUERY_SELECTOR_ALL = '$nativeQuerySelectorAll$';
-/** version: 6.5.0 */
+/** version: X.X.X */
 
 /**
  * Copyright (c) 2024 Salesforce, Inc.
@@ -225,7 +225,7 @@ const KEY__NATIVE_QUERY_SELECTOR_ALL = '$nativeQuerySelectorAll$';
 if (!globalThis.lwcRuntimeFlags) {
     Object.defineProperty(globalThis, 'lwcRuntimeFlags', { value: create(null) });
 }
-/** version: 6.5.0 */
+/** version: X.X.X */
 
 /*
  * Copyright (c) 2018, salesforce.com, inc.
@@ -4381,7 +4381,7 @@ defineProperty(Element.prototype, '$domManual$', {
     },
     configurable: true,
 });
-/** version: 6.5.0 */
+/** version: X.X.X */
 }
 //# sourceMappingURL=index.js.map
 

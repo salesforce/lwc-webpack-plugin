@@ -4,11 +4,9 @@
  * SPDX-License-Identifier: MIT
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
  */
-import { assertCodeIsValid, bundle } from './utils.mjs'
+import {assertCodeIsValid, bundle, testSnapshot} from './utils.mjs'
 import { spy } from 'sinon';
-import * as mochaSnap from "mocha-snap"
 import { expect } from 'chai';
-const snap = mochaSnap.default.default
 
 describe('basic test', () => {
 
@@ -19,7 +17,7 @@ describe('basic test', () => {
             modules: [ { dir: `${dir}/x` } ]
         }, mergeLastOptions)
 
-        await snap(code)
+        await testSnapshot(code)
         assertCodeIsValid(code)
     }
 
