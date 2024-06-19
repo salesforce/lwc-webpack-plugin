@@ -264,8 +264,6 @@ exports.registerWireService = registerWireService;
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
 /*!****************************************************!*\
   !*** ./test/fixtures/aliases/importWireService.js ***!
   \****************************************************/
@@ -274,8 +272,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 console.log(wire_service__WEBPACK_IMPORTED_MODULE_0__.register)
-
-})();
 
 /******/ })()
 ;
