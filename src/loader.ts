@@ -10,7 +10,7 @@ const { getInfoFromPath } = require('./module')
 
 module.exports = function loader (source: any) {
     const { resourcePath, resourceQuery, getOptions } = this
-    const { stylesheetConfig, outputConfig, experimentalDynamicComponent } = getOptions()
+    const { stylesheetConfig, outputConfig, experimentalDynamicComponent, enableDynamicComponents } = getOptions()
 
     let info
     try {
@@ -35,6 +35,7 @@ module.exports = function loader (source: any) {
         stylesheetConfig,
         outputConfig,
         experimentalDynamicComponent,
+        enableDynamicComponents,
         scopedStyles
     };
     // Avoid passing stylesheetConfig when undefined to avoid deprecation warning (lwc v3.1.3)
