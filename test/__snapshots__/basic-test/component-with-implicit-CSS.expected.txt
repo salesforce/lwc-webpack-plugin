@@ -182,7 +182,7 @@ __webpack_require__.r(__webpack_exports__);
 }, {
   tmpl: _component_html__WEBPACK_IMPORTED_MODULE_0__["default"],
   sel: "x-component",
-  apiVersion: 61
+  apiVersion: XXX
 }));
 })();
 
