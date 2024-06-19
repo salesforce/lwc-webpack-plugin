@@ -121,7 +121,7 @@ var _class;
 }, _class.stylesheets = [_component_html__WEBPACK_IMPORTED_MODULE_0__["default"]], _class), {
   tmpl: _component_html__WEBPACK_IMPORTED_MODULE_0__["default"],
   sel: "x-component",
-  apiVersion: 61
+  apiVersion: XXX
 }));
 })();
 
