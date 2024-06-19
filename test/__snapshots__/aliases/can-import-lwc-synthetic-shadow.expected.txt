@@ -452,7 +452,7 @@ function isNodeShadowed(node) {
 }
 
 /*
- * Copyright (c) 2018, salesforce.com, inc.
+ * Copyright (c) 2024, Salesforce, Inc.
  * All rights reserved.
  * SPDX-License-Identifier: MIT
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
@@ -655,10 +655,9 @@ function getFilteredChildNodes(node) {
         // we need to get only the nodes that were slotted
         const slots = arrayFromCollection(querySelectorAll$1.call(node, 'slot'));
         const resolver = getShadowRootResolver(getShadowRoot(node));
-        // Typescript is inferring the wrong function type for this particular
-        // overloaded method: https://github.com/Microsoft/TypeScript/issues/27972
-        // @ts-expect-error type-mismatch
-        return ArrayReduce.call(slots, (seed, slot) => {
+        return ArrayReduce.call(slots, 
+        // @ts-expect-error Array#reduce has a generic that gets lost in our retyped ArrayReduce
+        (seed, slot) => {
             if (resolver === getShadowRootResolver(slot)) {
                 ArrayPush.apply(seed, getFilteredSlotAssignedNodes(slot));
             }
@@ -853,7 +852,7 @@ function getTextContent(node) {
 }
 
 /*
- * Copyright (c) 2018, salesforce.com, inc.
+ * Copyright (c) 2024, Salesforce, Inc.
  * All rights reserved.
  * SPDX-License-Identifier: MIT
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
@@ -2433,7 +2432,7 @@ function fauxElementFromPoint(context, doc, left, top) {
 }
 
 /*
- * Copyright (c) 2018, salesforce.com, inc.
+ * Copyright (c) 2024, Salesforce, Inc.
  * All rights reserved.
  * SPDX-License-Identifier: MIT
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
@@ -2638,7 +2637,7 @@ if (typeof ClipboardEvent !== 'undefined') {
 }
 
 /*
- * Copyright (c) 2018, salesforce.com, inc.
+ * Copyright (c) 2024, Salesforce, Inc.
  * All rights reserved.
  * SPDX-License-Identifier: MIT
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
@@ -2876,7 +2875,7 @@ defineProperty(window, 'MutationObserver', {
 });
 
 /*
- * Copyright (c) 2018, salesforce.com, inc.
+ * Copyright (c) 2024, Salesforce, Inc.
  * All rights reserved.
  * SPDX-License-Identifier: MIT
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
@@ -3117,7 +3116,7 @@ const assignedSlotGetter = hasOwnProperty.call(Text.prototype, 'assignedSlot')
     : () => null;
 
 /*
- * Copyright (c) 2018, salesforce.com, inc.
+ * Copyright (c) 2024, Salesforce, Inc.
  * All rights reserved.
  * SPDX-License-Identifier: MIT
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
@@ -3146,10 +3145,9 @@ function initSlotObserver() {
 }
 function getFilteredSlotFlattenNodes(slot) {
     const childNodes = arrayFromCollection(childNodesGetter.call(slot));
-    // Typescript is inferring the wrong function type for this particular
-    // overloaded method: https://github.com/Microsoft/TypeScript/issues/27972
-    // @ts-expect-error type-mismatch
-    return ArrayReduce.call(childNodes, (seed, child) => {
+    return ArrayReduce.call(childNodes, 
+    // @ts-expect-error Array#reduce has a generic that is lost by our redefined ArrayReduce
+    (seed, child) => {
         if (child instanceof Element && isSlotElement(child)) {
             ArrayPush.apply(seed, getFilteredSlotFlattenNodes(child));
         }
@@ -3332,7 +3330,7 @@ function getNonPatchedFilteredArrayOfNodes(context, unfilteredNodes) {
 }
 
 /*
- * Copyright (c) 2018, salesforce.com, inc.
+ * Copyright (c) 2024, Salesforce, Inc.
  * All rights reserved.
  * SPDX-License-Identifier: MIT
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
@@ -3643,7 +3641,7 @@ if (hasOwnProperty.call(HTMLElement.prototype, 'getElementsByClassName')) {
 }
 
 /*
- * Copyright (c) 2018, salesforce.com, inc.
+ * Copyright (c) 2024, Salesforce, Inc.
  * All rights reserved.
  * SPDX-License-Identifier: MIT
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT

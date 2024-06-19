@@ -228,8 +228,6 @@ module.exports = lwc;
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
 /*!***************************************************************!*\
   !*** ./test/fixtures/multi-template/x/component/component.js ***!
   \***************************************************************/
@@ -246,7 +244,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,lwc__WEBPACK_IMPORTED_MODULE_0__.registerComponent)((0,lwc__WEBPACK_IMPORTED_MODULE_0__.registerDecorators)(class extends lwc__WEBPACK_IMPORTED_MODULE_0__.LightningElement {
+const __lwc_component_class_internal = (0,lwc__WEBPACK_IMPORTED_MODULE_0__.registerComponent)((0,lwc__WEBPACK_IMPORTED_MODULE_0__.registerDecorators)(class extends lwc__WEBPACK_IMPORTED_MODULE_0__.LightningElement {
   constructor(...args) {
     super(...args);
     this.renderB = false;
@@ -267,8 +265,7 @@ __webpack_require__.r(__webpack_exports__);
   tmpl: _component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
   sel: "x-component",
   apiVersion: XXX
-}));
-})();
-
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__lwc_component_class_internal);
 /******/ })()
 ;
