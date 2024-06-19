@@ -15,7 +15,8 @@ interface PluginConfig {
     modules: any[]
     stylesheetConfig: any
     outputConfig: any
-    experimentalDynamicComponent: any
+    experimentalDynamicComponent: any,
+    enableDynamicComponents: Boolean
 }
 
 const PACKAGE_JSON = 'package.json'
@@ -86,7 +87,8 @@ module.exports = class Plugin {
             modules = [],
             stylesheetConfig,
             outputConfig = {},
-            experimentalDynamicComponent = {}
+            experimentalDynamicComponent = {},
+            enableDynamicComponents
         } = this.config || {}
         compiler.hooks.environment.tap('lwc-webpack-plugin', () => {
             const resolverPlugin = new LwcModuleResolverPlugin(modules)
@@ -133,7 +135,8 @@ module.exports = class Plugin {
                 options: {
                     stylesheetConfig,
                     outputConfig,
-                    experimentalDynamicComponent
+                    experimentalDynamicComponent,
+                    enableDynamicComponents
                 }
             }
         })
