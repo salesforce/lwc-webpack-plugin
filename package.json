@@ -28,7 +28,7 @@
         "mocha": "^10.4.0",
         "mocha-snap": "^5.0.0",
         "nyc": "^15.1.0",
-        "sinon": "^17.0.1",
+        "sinon": "^18.0.0",
         "typescript": "~5.5.2",
         "webpack": "~5.92.1",
         "webpack-merge": "^5.10.0"
