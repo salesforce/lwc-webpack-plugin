@@ -33,36 +33,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var lwc__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lwc */ "lwc");
-/* harmony import */ var lwc__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lwc__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _component_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./component.css */ "./test/fixtures/typescript/x/component/component.css");
-/* harmony import */ var _component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./component.scoped.css?scoped=true */ "./dist/mocks/empty-style.js?scoped=true");
+/* harmony import */ var _component_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component.css */ "./test/fixtures/typescript/x/component/component.css");
+/* harmony import */ var _component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./component.scoped.css?scoped=true */ "./dist/mocks/empty-style.js?scoped=true");
+/* harmony import */ var lwc__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lwc */ "lwc");
+/* harmony import */ var lwc__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lwc__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
-
-
-
-
-const $fragment1 = (0,lwc__WEBPACK_IMPORTED_MODULE_0__.parseFragment)`<h1${3}>hello world from a simple module</h1>`;
+const $fragment1 = (0,lwc__WEBPACK_IMPORTED_MODULE_2__.parseFragment)`<h1${3}>hello world from a simple module</h1>`;
 function tmpl($api, $cmp, $slotset, $ctx) {
   const {st: api_static_fragment} = $api;
   return [api_static_fragment($fragment1, 1)];
   /*LWC compiler vX.X.X*/
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,lwc__WEBPACK_IMPORTED_MODULE_0__.registerTemplate)(tmpl));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,lwc__WEBPACK_IMPORTED_MODULE_2__.registerTemplate)(tmpl));
 tmpl.stylesheets = [];
-
-
-if (_component_css__WEBPACK_IMPORTED_MODULE_1__["default"]) {
-  tmpl.stylesheets.push.apply(tmpl.stylesheets, _component_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
-}
-if (_component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_2__["default"]) {
-  tmpl.stylesheets.push.apply(tmpl.stylesheets, _component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_2__["default"]);
-}
 tmpl.stylesheetToken = "lwc-6a8uqob2ku4";
 tmpl.legacyStylesheetToken = "x-component_component";
-(0,lwc__WEBPACK_IMPORTED_MODULE_0__.freezeTemplate)(tmpl);
+if (_component_css__WEBPACK_IMPORTED_MODULE_0__["default"]) {
+  tmpl.stylesheets.push.apply(tmpl.stylesheets, _component_css__WEBPACK_IMPORTED_MODULE_0__["default"]);
+}
+if (_component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_1__["default"]) {
+  tmpl.stylesheets.push.apply(tmpl.stylesheets, _component_scoped_css_scoped_true__WEBPACK_IMPORTED_MODULE_1__["default"]);
+}
+(0,lwc__WEBPACK_IMPORTED_MODULE_2__.freezeTemplate)(tmpl);
 
 
 /***/ }),
