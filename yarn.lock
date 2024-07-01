@@ -752,13 +752,6 @@
   dependencies:
     "@lwc/shared" "7.0.1"
 
-"@lwc/module-resolver@6.7.2":
-  version "6.7.2"
-  resolved "https://registry.yarnpkg.com/@lwc/module-resolver/-/module-resolver-6.7.2.tgz#41c5772fcc7e49e6074d7d26fa577d58a3c2e7d6"
-  integrity sha512-wm9BqWrz/Q1G7RC4/Sz5BpVLJn1qw0Bu2zFsc7Dz23J8nfziRTfNs2Fv8PMA9SrJ3BsYMDjIZOiv3Ip5CSPCJg==
-  dependencies:
-    resolve "~1.22.6"
-
 "@lwc/module-resolver@7.0.1":
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/@lwc/module-resolver/-/module-resolver-7.0.1.tgz#e681418b6976c9781673e218436983d1cc41b711"
