@@ -31,7 +31,7 @@
         "sinon": "^18.0.0",
         "typescript": "~5.5.2",
         "webpack": "~5.93.0",
-        "webpack-merge": "^5.10.0"
+        "webpack-merge": "^6.0.1"
     },
     "dependencies": {
         "resolve": "^1.22.8"
