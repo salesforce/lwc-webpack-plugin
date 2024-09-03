@@ -13,7 +13,7 @@
 if (!globalThis.lwcRuntimeFlags) {
   Object.defineProperty(globalThis, 'lwcRuntimeFlags', { value: Object.create(null) });
 }
-if (!lwcRuntimeFlags.ENABLE_FORCE_SHADOW_MIGRATE_MODE) {
+if (!lwcRuntimeFlags.ENABLE_FORCE_SHADOW_MIGRATE_MODE && !lwcRuntimeFlags.DISABLE_SYNTHETIC_SHADOW) {
 /**
  * Copyright (c) 2024 Salesforce, Inc.
  */
@@ -106,8 +106,11 @@ keys,
 seal, 
 /** Detached {@linkcode Object.setPrototypeOf}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf MDN Reference}. */
 setPrototypeOf, } = Object;
+const { 
 /** Detached {@linkcode Array.isArray}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray MDN Reference}. */
-const { isArray } = Array;
+isArray, 
+/** Detached {@linkcode Array.from}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from MDN Reference}. */
+from: ArrayFrom, } = Array;
 // For some reason, JSDoc don't get picked up for multiple renamed destructured constants (even
 // though it works fine for one, e.g. isArray), so comments for these are added to the export
 // statement, rather than this declaration.
@@ -151,7 +154,7 @@ function isFalse(obj) {
  * @returns `true` if the value is a function.
  */
 // Replacing `Function` with a narrower type that works for all our use cases is tricky...
-// eslint-disable-next-line @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 function isFunction(obj) {
     return typeof obj === 'function';
 }
