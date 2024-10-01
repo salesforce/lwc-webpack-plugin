@@ -792,6 +792,13 @@
   dependencies:
     resolve "~1.22.8"
 
+"@lwc/module-resolver@8.1.2":
+  version "8.1.2"
+  resolved "https://registry.yarnpkg.com/@lwc/module-resolver/-/module-resolver-8.1.2.tgz#a947f06383640fbf9c3fb34ccafb0126e4eb5e79"
+  integrity sha512-BMcv986aFu4L3bZ5i7VGimE9t5xSGgDOdQRR7En+o4Nes1te1KuloekSIKe9gHfrjQLQmbvDgynIlIpptE0VWA==
+  dependencies:
+    resolve "~1.22.8"
+
 "@lwc/rollup-plugin@7.2.3":
   version "7.2.3"
   resolved "https://registry.yarnpkg.com/@lwc/rollup-plugin/-/rollup-plugin-7.2.3.tgz#38d300509981bf603bcab3348b56880d3e6c344f"
