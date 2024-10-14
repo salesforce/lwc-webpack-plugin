@@ -160,6 +160,8 @@ module.exports = lwc;
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
 /*!***********************************************************!*\
   !*** ./test/fixtures/scoped-css/x/component/component.js ***!
   \***********************************************************/
@@ -180,5 +182,7 @@ const __lwc_component_class_internal = (0,lwc__WEBPACK_IMPORTED_MODULE_1__.regis
   apiVersion: XXX
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__lwc_component_class_internal);
+})();
+
 /******/ })()
 ;
