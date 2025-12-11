@@ -8,14 +8,14 @@
 /***/ (() => {
 
 /**
- * Copyright (c) 2024 Salesforce, Inc.
+ * Copyright (c) 2025 Salesforce, Inc.
  */
 if (!globalThis.lwcRuntimeFlags) {
   Object.defineProperty(globalThis, 'lwcRuntimeFlags', { value: Object.create(null) });
 }
 if (!lwcRuntimeFlags.ENABLE_FORCE_SHADOW_MIGRATE_MODE && !lwcRuntimeFlags.DISABLE_SYNTHETIC_SHADOW) {
 /**
- * Copyright (c) 2024 Salesforce, Inc.
+ * Copyright (c) 2025 Salesforce, Inc.
  */
 /*
  * Copyright (c) 2018, salesforce.com, inc.
@@ -84,41 +84,21 @@ create,
 defineProperties, 
 /** Detached {@linkcode Object.defineProperty}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty MDN Reference}. */
 defineProperty, 
-/** Detached {@linkcode Object.entries}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries MDN Reference}. */
-entries, 
-/** Detached {@linkcode Object.freeze}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze MDN Reference}. */
-freeze, 
-/** Detached {@linkcode Object.fromEntries}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries MDN Reference}. */
-fromEntries, 
 /** Detached {@linkcode Object.getOwnPropertyDescriptor}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor MDN Reference}. */
 getOwnPropertyDescriptor, 
-/** Detached {@linkcode Object.getOwnPropertyDescriptors}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptors MDN Reference}. */
-getOwnPropertyDescriptors, 
-/** Detached {@linkcode Object.getOwnPropertyNames}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames MDN Reference}. */
-getOwnPropertyNames, 
-/** Detached {@linkcode Object.getOwnPropertySymbols}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertySymbols MDN Reference}. */
-getOwnPropertySymbols, 
 /** Detached {@linkcode Object.getPrototypeOf}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getPrototypeOf MDN Reference}. */
 getPrototypeOf, 
 /** Detached {@linkcode Object.hasOwnProperty}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty MDN Reference}. */
 hasOwnProperty, 
-/** Detached {@linkcode Object.isFrozen}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/isFrozen MDN Reference}. */
-isFrozen, 
-/** Detached {@linkcode Object.keys}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys MDN Reference}. */
-keys, 
-/** Detached {@linkcode Object.seal}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal MDN Reference}. */
-seal, 
 /** Detached {@linkcode Object.setPrototypeOf}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf MDN Reference}. */
 setPrototypeOf, } = Object;
 const { 
 /** Detached {@linkcode Array.isArray}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray MDN Reference}. */
-isArray, 
-/** Detached {@linkcode Array.from}; see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from MDN Reference}. */
-from: ArrayFrom, } = Array;
+isArray} = Array;
 // For some reason, JSDoc don't get picked up for multiple renamed destructured constants (even
 // though it works fine for one, e.g. isArray), so comments for these are added to the export
 // statement, rather than this declaration.
-const { concat: ArrayConcat, copyWithin: ArrayCopyWithin, every: ArrayEvery, fill: ArrayFill, filter: ArrayFilter, find: ArrayFind, findIndex: ArrayFindIndex, includes: ArrayIncludes, indexOf: ArrayIndexOf, join: ArrayJoin, map: ArrayMap, pop: ArrayPop, push: ArrayPush, reduce: ArrayReduce, reverse: ArrayReverse, shift: ArrayShift, slice: ArraySlice, some: ArraySome, sort: ArraySort, splice: ArraySplice, unshift: ArrayUnshift, forEach, // Weird anomaly!
+const { filter: ArrayFilter, find: ArrayFind, findIndex: ArrayFindIndex, indexOf: ArrayIndexOf, join: ArrayJoin, map: ArrayMap, push: ArrayPush, reduce: ArrayReduce, reverse: ArrayReverse, slice: ArraySlice, splice: ArraySplice, forEach, // Weird anomaly!
  } = Array.prototype;
 /**
  * Determines whether the argument is `undefined`.
@@ -227,7 +207,7 @@ const KEY__NATIVE_QUERY_SELECTOR_ALL = '$nativeQuerySelectorAll$';
 /** version: X.X.X */
 
 /**
- * Copyright (c) 2024 Salesforce, Inc.
+ * Copyright (c) 2025 Salesforce, Inc.
  */
 if (!globalThis.lwcRuntimeFlags) {
     Object.defineProperty(globalThis, 'lwcRuntimeFlags', { value: create(null) });
@@ -244,7 +224,7 @@ if (!globalThis.lwcRuntimeFlags) {
 // eslint-disable-next-line @lwc/lwc-internal/no-global-node
 const _Node = Node;
 const nodePrototype = _Node.prototype;
-const { DOCUMENT_POSITION_CONTAINED_BY, DOCUMENT_POSITION_CONTAINS, DOCUMENT_POSITION_PRECEDING, DOCUMENT_POSITION_FOLLOWING, ELEMENT_NODE, TEXT_NODE, CDATA_SECTION_NODE, PROCESSING_INSTRUCTION_NODE, COMMENT_NODE, DOCUMENT_FRAGMENT_NODE, } = _Node;
+const { DOCUMENT_POSITION_CONTAINED_BY, DOCUMENT_POSITION_CONTAINS, DOCUMENT_POSITION_PRECEDING, DOCUMENT_POSITION_FOLLOWING, ELEMENT_NODE, TEXT_NODE, CDATA_SECTION_NODE, PROCESSING_INSTRUCTION_NODE, COMMENT_NODE} = _Node;
 const { appendChild, cloneNode, compareDocumentPosition, insertBefore, removeChild, replaceChild, hasChildNodes, } = nodePrototype;
 const { contains } = HTMLElement.prototype;
 const firstChildGetter = getOwnPropertyDescriptor(nodePrototype, 'firstChild').get;
@@ -368,7 +348,7 @@ const { getElementsByName } = HTMLDocument.prototype;
  * SPDX-License-Identifier: MIT
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
  */
-const { addEventListener: windowAddEventListener, removeEventListener: windowRemoveEventListener, getComputedStyle: windowGetComputedStyle, getSelection: windowGetSelection, } = window;
+const { addEventListener: windowAddEventListener, removeEventListener: windowRemoveEventListener} = window;
 
 /*
  * Copyright (c) 2018, salesforce.com, inc.
