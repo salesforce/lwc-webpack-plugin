@@ -2,21 +2,23 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./node_modules/@lwc/wire-service/dist/index.cjs.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/@lwc/wire-service/dist/index.cjs.js ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, exports) => {
+/***/ "./node_modules/@lwc/wire-service/dist/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/@lwc/wire-service/dist/index.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ValueChangedEvent: () => (/* binding */ ValueChangedEvent),
+/* harmony export */   register: () => (/* binding */ register),
+/* harmony export */   registerWireService: () => (/* binding */ registerWireService)
+/* harmony export */ });
 /**
- * Copyright (c) 2025 Salesforce, Inc.
+ * Copyright (c) 2026 Salesforce, Inc.
  */
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
 /**
- * Copyright (c) 2025 Salesforce, Inc.
+ * Copyright (c) 2026 Salesforce, Inc.
  */
 /*
  * Copyright (c) 2018, salesforce.com, inc.
@@ -215,11 +217,9 @@ class LegacyWireAdapterBridge {
     }
 }
 
-exports.ValueChangedEvent = ValueChangedEvent;
-exports.register = register;
-exports.registerWireService = registerWireService;
+
 /** version: X.X.X */
-//# sourceMappingURL=index.cjs.js.map
+//# sourceMappingURL=index.js.map
 
 
 /***/ })
@@ -251,6 +251,23 @@ exports.registerWireService = registerWireService;
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -270,7 +287,7 @@ var __webpack_exports__ = {};
   !*** ./test/fixtures/aliases/importWireService.js ***!
   \****************************************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var wire_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! wire-service */ "./node_modules/@lwc/wire-service/dist/index.cjs.js");
+/* harmony import */ var wire_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! wire-service */ "./node_modules/@lwc/wire-service/dist/index.js");
 
 
 console.log(wire_service__WEBPACK_IMPORTED_MODULE_0__.register)
