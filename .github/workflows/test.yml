@@ -5,7 +5,8 @@ on:
   pull_request:
     branches: [main]
 jobs:
-  build:
+  test:
+    name: Test (LWC ${{ matrix.lwc }})
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -16,5 +17,5 @@ jobs:
         with:
           node-version: 24
           cache: yarn
-      - run: yarn add lwc@${{matrix.lwc}}
-      - run: npm test
+      - run: yarn add lwc@${{ matrix.lwc }}
+      - run: yarn test:coverage
