@@ -11,12 +11,26 @@ import { LwcModuleResolverPlugin } from './module-resolver'
 import { existsSync, readFileSync } from 'fs'
 import noderesolve from 'resolve'
 
+// copied from LWC because that's easier than sniffing it out from v8/v9
+interface DynamicImports {
+    loader?: string;
+    strictsSpecifier: string;
+}
+
 interface PluginConfig {
     modules: any[]
     stylesheetConfig: any
     outputConfig: any
     experimentalDynamicComponent: any,
-    enableDynamicComponents: Boolean
+    /**
+     * Enables dynamic imports for LWC v8.
+     * @deprecated
+     */
+    enableDynamicComponents?: DynamicImports,
+    /**
+     * Enables dynamic imports for LWC v9.
+     */
+    dynamicImports?: DynamicImports
 }
 
 const PACKAGE_JSON = 'package.json'
@@ -87,6 +101,8 @@ module.exports = class Plugin {
             modules = [],
             stylesheetConfig,
             outputConfig = {},
+            // LWC v8 -> v9 compatibility
+            dynamicImports = config.experimentalDynamicComponent ?? {}
             experimentalDynamicComponent = {},
             enableDynamicComponents
         } = this.config || {}
@@ -135,7 +151,8 @@ module.exports = class Plugin {
                 options: {
                     stylesheetConfig,
                     outputConfig,
-                    experimentalDynamicComponent,
+                    dynamicImports, // LWC v9
+                    experimentalDynamicComponent, // LWC v8
                     enableDynamicComponents
                 }
             }
