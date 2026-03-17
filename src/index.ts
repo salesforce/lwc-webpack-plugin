@@ -102,7 +102,7 @@ module.exports = class Plugin {
             stylesheetConfig,
             outputConfig = {},
             // LWC v8 -> v9 compatibility
-            dynamicImports = config.experimentalDynamicComponent ?? {}
+            dynamicImports = config.experimentalDynamicComponent ?? {},
             experimentalDynamicComponent = {},
             enableDynamicComponents
         } = this.config || {}
