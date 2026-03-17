@@ -10,7 +10,7 @@ const { getInfoFromPath } = require('./module')
 
 module.exports = function loader (source: any) {
     const { resourcePath, resourceQuery, getOptions } = this
-    const { stylesheetConfig, outputConfig, experimentalDynamicComponent, enableDynamicComponents } = getOptions()
+    const { stylesheetConfig, outputConfig, dynamicImports, experimentalDynamicComponent, enableDynamicComponents } = getOptions()
 
     let info
     try {
@@ -34,7 +34,8 @@ module.exports = function loader (source: any) {
         namespace: info.ns,
         stylesheetConfig,
         outputConfig,
-        experimentalDynamicComponent,
+        dynamicImports, // LWC v9
+        experimentalDynamicComponent, // LWC v8
         enableDynamicComponents,
         scopedStyles
     };
