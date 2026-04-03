@@ -20,7 +20,7 @@
     "@babel/plugin-syntax-decorators": "^7.28.6",
     "@babel/preset-typescript": "^7.28.5",
     "@lwc/module-resolver": "9.1.1",
-    "@types/node": "22.10.3",
+    "@types/node": "25.5.2",
     "babel-loader": "^9.2.1",
     "chai": "^5.3.3",
     "lwc": "9.1.1",
